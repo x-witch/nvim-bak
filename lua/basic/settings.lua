@@ -21,7 +21,7 @@ vim.o.relativenumber = true
 -- 设定光标上下两侧最少保留的屏幕行数
 vim.o.scrolloff = 10
 -- 是否支持鼠标操作
-vim.o.mouse = "c"
+vim.o.mouse = "a"
 -- 是否启用系统剪切板
 vim.o.clipboard = "unnamedplus"
 -- 是否开启备份文件
