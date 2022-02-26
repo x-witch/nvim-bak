@@ -142,15 +142,15 @@ packer.startup(
             }
 
             -- 支持 LSP 状态的 buffer 栏
-            use {
-                "akinsho/bufferline.nvim",
-                requires = {
-                    "famiu/bufdelete.nvim" -- 删除 buffer 时不影响现有布局
-                },
-                config = function()
-                    require("conf.bufferline")
-                end
-            }
+            -- use {
+            --     "akinsho/bufferline.nvim",
+            --     requires = {
+            --         "famiu/bufdelete.nvim" -- 删除 buffer 时不影响现有布局
+            --     },
+            --     config = function()
+            --         require("conf.bufferline")
+            --     end
+            -- }
 
             -- 轻量级的状态栏插件
             use {
