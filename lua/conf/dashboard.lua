@@ -1,7 +1,6 @@
 vim.g.dashboard_default_executive = "telescope"
 vim.g.dashboard_custom_header = {
-"                                                       ", 
-"                                                        ", 
+"                                                        ",
 "                                                        ",
 "  ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗",
 "  ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║",
@@ -9,8 +8,8 @@ vim.g.dashboard_custom_header = {
 "  ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║",
 "  ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║",
 "  ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝",
-"                                                        ", 
-"                                                        ", 
+"                                                        ",
+"                                                        ",
 }
 
 
@@ -36,14 +35,14 @@ vim.g.dashboard_custom_section = {
                 description = { "     查看内容  SPC fw" },
                 command = "Telescope live_grep",
         },
-       -- f = {
-       --         description = { "     查看主题  SPC tc" },
-       --         command = "Telescope colorscheme",
-       -- },
-        g = {
-                description = { "    ∂ 查看命令  SPC fc" },
-                command = "Telescope commands",
-        },
+        -- f = {
+        --         description = { "     查看主题  SPC tc" },
+        --         command = "Telescope colorscheme",
+        -- },
+        -- g = {
+        --         description = { "    ∂ 查看命令  SPC fc" },
+        --         command = "Telescope commands",
+        -- },
         h = {
                 description = { "     查看帮助  SPC fa" },
                 command = "Telescope man_pages",
@@ -57,3 +56,4 @@ vim.g.dashboard_session_directory = "~/.config/nvim/.sessions"
 vim.g.dashboard_preview_file_height = 12
 vim.g.dashboard_preview_file_width = 80
 vim.g.dashboard_default_executive = "Telescope"
+
