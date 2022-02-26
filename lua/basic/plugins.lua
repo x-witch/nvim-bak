@@ -167,11 +167,12 @@ packer.startup(
 
             --仪表盘
             use {
-                "glepnir/dashboard-nvim",
+                "startup-nvim/startup.nvim",
+                requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
                 config = function()
-                    require("conf.dashboard")
-                end}
-
+                    require"conf.startup".setup()
+                end
+            }
 
             -- 精美弹窗
             use {
