@@ -8,7 +8,7 @@ vim.opt.listchars:append("eol:⏎")
 -- 一键运行python
 vim.cmd(
     [[
-map <F5> :call RunPython()<CR>
+map <F4> :call RunPython()<CR>
 func! RunPython()
 	exec "w"
 	if &filetype=='python'

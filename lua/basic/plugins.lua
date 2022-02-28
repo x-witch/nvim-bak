@@ -13,6 +13,9 @@ packer.startup(
                 end
             }
 
+            -- 插件缓存
+            use 'lewis6991/impatient.nvim'
+
             ------------- LSP & DAP -------------
 
             -- LSP 基础服务
@@ -161,16 +164,6 @@ packer.startup(
                 },
                 config = function()
                     require("conf.feline")
-                end
-            }
-
-
-            --仪表盘
-            use {
-                "startup-nvim/startup.nvim",
-                requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
-                config = function()
-                    require"conf.startup".setup()
                 end
             }
 
@@ -367,12 +360,12 @@ packer.startup(
             }
 
             -- 自动会话管理
-            -- use {
-            --     "rmagatti/auto-session",
-            --     config = function()
-            --         require("conf.auto-session")
-            --     end
-            -- }
+            use {
+                 "rmagatti/auto-session",
+                 config = function()
+                     require("conf.auto-session")
+                 end
+            }
 
             -- 自动恢复光标位置
             use {
