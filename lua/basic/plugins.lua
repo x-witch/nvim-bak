@@ -382,6 +382,11 @@ packer.startup(
                     require("conf.lsp-colors")
                 end
             }
+
+
+            --启动时间
+            use 'dstein64/vim-startuptime'
+
         end,
         -- 使用浮动窗口
         config = {
