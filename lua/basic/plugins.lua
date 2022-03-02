@@ -155,17 +155,27 @@ packer.startup(
                 end
             }
 
-            -- 轻量级的状态栏插件
+            -- 状态栏
             use {
-                "feline-nvim/feline.nvim",
-                requires = {
-                    "SmiteshP/nvim-gps", -- 为状态栏提供上下文信息
-                    "kyazdani42/nvim-web-devicons"
-                },
+                'nvim-lualine/lualine.nvim',
+                requires = { 'kyazdani42/nvim-web-devicons', opt = true },
                 config = function()
-                    require("conf.feline")
+                    require("conf.lualine")
                 end
             }
+
+
+            -- 轻量级的状态栏插件
+            -- use {
+            --     "feline-nvim/feline.nvim",
+            --     requires = {
+            --         "SmiteshP/nvim-gps", -- 为状态栏提供上下文信息
+            --         "kyazdani42/nvim-web-devicons"
+            --     },
+            --     config = function()
+            --         require("conf.feline")
+            --     end
+            -- }
 
             -- 精美弹窗
             use {
