@@ -378,13 +378,20 @@ packer.startup(
                 end
             }
 
-            -- 自动会话管理
             use {
-                 "rmagatti/auto-session",
-                 config = function()
-                     require("conf.auto-session")
-                 end
+                'glepnir/dashboard-nvim',
+                config = function()
+                    require('conf.dashboard')
+                end
             }
+
+            -- 自动会话管理
+            -- use {
+            --      "rmagatti/auto-session",
+            --      config = function()
+            --          require("conf.auto-session")
+            --      end
+            -- }
 
             -- 自动恢复光标位置
             use {
