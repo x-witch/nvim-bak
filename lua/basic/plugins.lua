@@ -186,6 +186,15 @@ packer.startup(
                 event = "BufEnter"
             }
 
+            -- 加速 j 或 k 移动
+            use{
+                "PHSix/faster.nvim",
+                config = function()
+                    require("conf.accelerate_jk")
+                end,
+                event = "VimEnter"
+            }
+
             ------------- 常见工具 -------------
 
             -- 文件树
