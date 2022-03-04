@@ -6,13 +6,14 @@
 ├── lint/                           # 存放各种语言的代码检查规范配置文件，如 pylint 等
 ├── lua/
 │   ├── basic/                      # 存放基本配置项文件
-│   │   ├── config.lua              # 用户自定义配置的文件
-│   │   ├── keybinds.lua            # 键位绑定的文件
+│   │   ├── config.lua              # 用户自定义配置文件
+│   │   ├── keybinds.lua            # 键位绑定文件
 │   │   ├── plugins.lua             # 依赖插件的文件
 │   │   └── settings.lua            # neovim 基本配置项的文件
 │   ├── conf/                       # 存放插件相关配置文件
 │   ├── dap/                        # 存放 DAP 相关配置文件
 │   └── lsp/                        # 存放 LSP 相关配置文件
+|	└── util						# 存放dashboard头部文件
 └── snippet/                        # 存放代码片段相关文件
 ```
 
@@ -119,5 +120,4 @@
 | 快捷键 | 功能 |
 |---- |-----|
 | \<leader\>2 | 打开大纲预览 |
-
 
