@@ -4,9 +4,9 @@ vim.g.dashboard_preview_pipeline = 'lolcat'
 vim.g.dashboard_preview_file_height = 10
 vim.g.dashboard_preview_file_width = 70
 vim.g.dashboard_preview_file = '~/.config/nvim/lua/util/neovim.txt'
--- vim.g.dashboard_session_directory = "~/.config/nvim/.sessions"
-vim.g.dashboard_session_directory = vim.fn.stdpath('cache').."/session"
-vim.g.dashboard_footer_icon = " 🐬 "
+vim.g.dashboard_session_directory = "~/.config/nvim/sessions"
+-- vim.g.dashboard_footer_icon = " 🐬 "
+vim.g.dashboard_custom_footer = {"🐬 Have A Good Day!"}
 
 vim.g.dashboard_custom_section = {
         a = {
@@ -30,22 +30,17 @@ vim.g.dashboard_custom_section = {
                 description = { "     查看内容  SPC fw" },
                 command = "Telescope live_grep",
         },
-        f = {
-                description = { "     查看主题  SPC tc" },
-                command = "Telescope colorscheme",
-        },
-        g = {
-                description = { "    ∂ 查看命令  SPC fc" },
-                command = "Telescope commands",
-        },
-        h = {
-                description = { "     查看帮助  SPC fa" },
-                command = "Telescope man_pages",
-        },
+        -- f = {
+        --         description = { "     查看主题  SPC tc" },
+        --         command = "Telescope colorscheme",
+        -- },
+        -- g = {
+        --         description = { "    ∂ 查看命令  SPC fc" },
+        --         command = "Telescope commands",
+        -- },
+        -- h = {
+        --         description = { "     查看帮助  SPC fa" },
+        --         command = "Telescope man_pages",
+        -- },
 }
 -- vim.g.dashboard_disable_at_vimenter = 0
--- vim.g.dashboard_preview_command = "bat"
--- vim.g.dashboard_preview_pipeline = "lolcat -F 0.3"
--- vim.g.dashboard_preview_file_height = 12
--- vim.g.dashboard_preview_file_width = 80
---
