@@ -1,3 +1,6 @@
+--------- 用户设置 ---------
+vim.u = {}
+
 -- 获取平台图标
 local platform_icons = {
     MAC = " ",
@@ -12,6 +15,7 @@ local platform_python = {
     WINDOWS = "C:\\Python\\python.exe"
 }
 
+
 -- 获取平台 undotree 路径
 local platform_undotree = {
     MAC = "~/.config/nvim/undodir",
@@ -19,7 +23,7 @@ local platform_undotree = {
     WINDOWS = "C:\\Users\\%USERNAME%\\AppData\\Local\\nvim\\undodir"
 }
 
--- 获取平台 vim-snippet 路径
+-- 获取平台 代码片段存储路径
 local platform_snippet = {
     MAC = "~/.config/nvim/snippet",
     UNIX = "~/.config/nvim/snippet",
@@ -33,6 +37,18 @@ local platform_lint = {
     WINDOWS = "C:\\Users\\%USERNAME%\\AppData\\Local\\nvim\\lint"
 }
 
+-- 数据库链接地址
+-- vim.g.dbs = {
+--     {
+--         name = "dev",
+--         url = "mysql://nrnn@192.168.0.120/db1"
+--     },
+--     {
+--         name = "local",
+--         url = "mysql://root@localhost:3306/test"
+--     }
+-- }
+
 -- 获取平台信息
 vim.g.platform_info = vim.bo.fileformat:upper()
 -- 获取平台图标
@@ -45,7 +61,6 @@ vim.g.vsnip_snippet_dir = platform_snippet[vim.g.platform_info]
 vim.g.undotree_dir = platform_undotree[vim.g.platform_info]
 -- 指定 lint 配置文件路径
 vim.g.lint_config_path = platform_lint[vim.g.platform_info]
-
 -- 指定 translate 代理服务器
 vim.g.translator_proxy_url = "socks5://127.0.0.1:7890"
 -- 是否开启透明背景

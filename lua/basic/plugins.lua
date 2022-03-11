@@ -298,7 +298,10 @@ packer.startup(
 
             -- emmet 缩写
             use {
-                "mattn/emmet-vim"
+                "mattn/emmet-vim",
+                ft = {
+                    "html","javascript","typescript","vue","xml"
+                }
             }
 
             ------------- 编辑体验 -------------
@@ -358,7 +361,9 @@ packer.startup(
                 "petertriho/nvim-scrollbar",
                 config = function()
                     require("conf.nvim-scrollbar")
-                end
+                end,
+                load_file = true,
+                event = {"BufRead", "BufNewFile"}
             }
 
             -- 内置终端
@@ -366,7 +371,9 @@ packer.startup(
                 "akinsho/toggleterm.nvim",
                 config = function()
                     require("conf.toggleterm")
-                end
+                end,
+                load_file = true,
+                event = {"BufRead", "BufNewFile"}
             }
 
 
@@ -375,7 +382,9 @@ packer.startup(
                 "Pocco81/AutoSave.nvim",
                 config = function()
                     require("conf.AutoSave")
-                end
+                end,
+                load_file = true,
+                event = {"BufRead", "BufNewFile"}
             }
 
             use {
