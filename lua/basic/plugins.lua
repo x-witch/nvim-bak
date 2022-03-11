@@ -145,7 +145,8 @@ packer.startup(
             }
 
 
-            -- 支持 LSP 状态的 buffer 栏
+
+            -- 支持 LSP 的 buffer 栏
             use {
                 "akinsho/bufferline.nvim",
                 requires = {
@@ -157,26 +158,24 @@ packer.startup(
             }
 
             -- 状态栏
-            use {
-                'nvim-lualine/lualine.nvim',
-                requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-                config = function()
-                    require("conf.lualine")
-                end
-            }
-
-
-            -- 轻量级的状态栏插件
             -- use {
-            --     "feline-nvim/feline.nvim",
-            --     requires = {
-            --         "SmiteshP/nvim-gps", -- 为状态栏提供上下文信息
-            --         "kyazdani42/nvim-web-devicons"
-            --     },
+            --     'nvim-lualine/lualine.nvim',
+            --     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
             --     config = function()
-            --         require("conf.feline")
+            --         require("conf.lualine")
             --     end
             -- }
+
+            use{
+                "NTBBloodbath/galaxyline.nvim",
+                -- your statusline
+                config = function()
+                    require("galaxyline.themes.eviline")
+                end,
+                -- some optional icons
+                requires = { "kyazdani42/nvim-web-devicons", opt = true }
+            }
+
 
             -- 精美弹窗
             use {
