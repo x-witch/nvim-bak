@@ -10,7 +10,7 @@ vim.g.dashboard_custom_footer = {"🐬 Have A Good Day!"}
 
 vim.g.dashboard_custom_section = {
         a = {
-                description = { "     新 文 件  SPC fo" },
+                description = { "     新 文 件  SPC fn" },
                 command = "DashboardNewFile",
         },
         b = {
@@ -19,7 +19,7 @@ vim.g.dashboard_custom_section = {
                 command = "Telescope fd find_command=fd,--hidden",
         },
         c = {
-                description = { "     已用文件  SPC fh" },
+                description = { "     已用文件  SPC fo" },
                 command = "Telescope oldfiles",
         },
         d = {
@@ -27,7 +27,7 @@ vim.g.dashboard_custom_section = {
                 command = "Telescope marks",
         },
         e = {
-                description = { "     查看内容  SPC fw" },
+                description = { "     查看内容  SPC fg" },
                 command = "Telescope live_grep",
         },
         -- f = {
