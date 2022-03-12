@@ -5,8 +5,8 @@ local packer = require("packer")
 packer.startup(
     {
         function()
-            use {
-                -- 包管理器
+            -- 包管理器
+            use {               
                 "wbthomason/packer.nvim",
                 config = function()
                     -- 所有插件加载完成后运行的代码
@@ -166,7 +166,7 @@ packer.startup(
             --     end
             -- }
 
-            use{
+            use({
                 "NTBBloodbath/galaxyline.nvim",
                 -- your statusline
                 config = function()
@@ -174,7 +174,7 @@ packer.startup(
                 end,
                 -- some optional icons
                 requires = { "kyazdani42/nvim-web-devicons", opt = true }
-            }
+            })
 
 
             -- 精美弹窗
