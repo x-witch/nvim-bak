@@ -5,8 +5,8 @@ vim.g.dashboard_preview_file_height = 10
 vim.g.dashboard_preview_file_width = 70
 vim.g.dashboard_preview_file = '~/.config/nvim/lua/util/neovim.txt'
 vim.g.dashboard_session_directory = "~/.cache/nvim/session"
--- vim.g.dashboard_footer_icon = " 🐬 "
 vim.g.dashboard_custom_footer = {"🐬 Have A Good Day!"}
+-- vim.g.dashboard_footer_icon = " 🐬 "
 
 vim.g.dashboard_custom_section = {
         a = {
