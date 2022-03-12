@@ -1,6 +1,3 @@
---------- 用户设置 ---------
-vim.u = {}
-
 -- 获取平台图标
 local platform_icons = {
     MAC = " ",
