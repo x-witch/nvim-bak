@@ -10,7 +10,7 @@ vim.g.dashboard_custom_footer = {"🐬 Have A Good Day!"}
 
 vim.g.dashboard_custom_section = {
         a = {
-                description = { "     新 文 件  NON" },
+                description = { "     新 文 件  NON no" },
                 command = "DashboardNewFile",
         },
         b = {
