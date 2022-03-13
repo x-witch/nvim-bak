@@ -5,8 +5,8 @@ require("bufferline").setup(
         options = {
             -- 为每个 buffer 都配置一个序数
             numbers = "ordinal",
-            -- 使用内置 LSP 进行诊断
-            diagnostics = "nvim_lsp",
+            -- 若想使用内置 LSP 进行诊断，设置为“nvim_lsp”
+            diagnostics = false,
             -- 不建议更改图标
             indicator_icon = "▎",
             buffer_close_icon = "",
@@ -14,9 +14,12 @@ require("bufferline").setup(
             close_icon = "",
             left_trunc_marker = "",
             right_trunc_marker = "",
+            max_name_length = 18,
+            max_prefix_length = 15,
+            tab_size = 10,
             -- 分割符样式："slant" | "thick" | "thin"
             -- 如果是透明背景，不推荐使用 slant
-            separator_style = "slant",
+            separator_style = "thin",
             -- 左侧让出 nvim-tree 的位置
             offsets = {
                 {
@@ -26,6 +29,14 @@ require("bufferline").setup(
                     text_align = "left"
                 }
             },
+            show_buffer_icons = true,
+            show_buffer_close_icons = true,
+            show_close_icon = true,
+            show_tab_indicators = true,
+            persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
+            enforce_regular_tabs = false,
+            always_show_bufferline = true,
+            sort_by = "id",
             -- 显示 LSP 报错图标
             diagnostics_indicator = function(count, level, diagnostics_dict, context)
                 local s = " "

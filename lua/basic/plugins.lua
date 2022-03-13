@@ -150,7 +150,8 @@ packer.startup(
             use {
                 "akinsho/bufferline.nvim",
                 requires = {
-                    "famiu/bufdelete.nvim" -- 删除 buffer 时不影响现有布局
+                    "famiu/bufdelete.nvim", -- 删除 buffer 时不影响现有布局
+                    'kyazdani42/nvim-web-devicons'
                 },
                 config = function()
                     require("conf.bufferline")
