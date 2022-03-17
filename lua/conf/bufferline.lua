@@ -16,10 +16,10 @@ require("bufferline").setup(
             right_trunc_marker = "",
             max_name_length = 18,
             max_prefix_length = 15,
-            tab_size = 10,
+            tab_size = 18,
             -- 分割符样式："slant" | "thick" | "thin"
             -- 如果是透明背景，不推荐使用 slant
-            separator_style = "thin",
+            separator_style = "thick",
             -- 左侧让出 nvim-tree 的位置
             offsets = {
                 {
