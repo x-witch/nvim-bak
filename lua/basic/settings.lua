@@ -28,8 +28,6 @@ vim.o.clipboard = "unnamedplus"
 vim.o.backup = false
 -- 是否开启交换文件
 vim.o.swapfile = false
--- 是否折行
-vim.o.wrap = false
 -- 是否特殊显示空格等字符
 vim.o.list = true
 -- 是否开启自动缩进
