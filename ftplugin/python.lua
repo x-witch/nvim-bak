@@ -13,10 +13,10 @@ map <F4> :call RunPython()<CR>
 func! RunPython()
 	exec "w"
 	if &filetype=='python'
-	    set splitbelow
-	    :sp
-	    :term python3.9 %
-		" exec "!time python3.9 %"
+	    " set splitbelow
+	    " :sp
+	    " :term python3.9 %
+		exec "!time python3.9 %"
 	endif
 endfunc
 ]]
