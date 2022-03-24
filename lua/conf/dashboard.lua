@@ -2,12 +2,10 @@ vim.g.dashboard_default_executive = "telescope"
 vim.g.dashboard_preview_command = 'cat'
 vim.g.dashboard_preview_pipeline = 'lolcat'
 vim.g.dashboard_preview_file_height = 10
-vim.g.dashboard_preview_file_width = 70
-vim.g.dashboard_preview_file = '~/.config/nvim/lua/util/neovim.txt'
+vim.g.dashboard_preview_file_width = 20
+vim.g.dashboard_preview_file = '~/.config/nvim/lua/util/ascii_art'
 vim.g.dashboard_session_directory = "~/.cache/nvim/session"
 vim.g.dashboard_custom_footer = {"🐬 Have A Good Day!"}
--- vim.g.dashboard_footer_icon = " 🐬 "
-
 vim.g.dashboard_custom_section = {
         a = {
                 description = { "     新 文 件  NON no" },
