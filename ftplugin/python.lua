@@ -8,15 +8,15 @@ vim.bo.softtabstop = 4
 
 -- 一键运行python
 vim.cmd(
-    [[
+[[
 map <F4> :call RunPython()<CR>
 func! RunPython()
 	exec "w"
 	if &filetype=='python'
 	    set splitbelow
 	    :sp
-	    " :term python3.9 %
-		exec "!time python3.9 %"
+	    :term python3.9 %
+		" exec "!time python3.9 %"
 	endif
 endfunc
 ]]
