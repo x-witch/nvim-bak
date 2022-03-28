@@ -14,8 +14,8 @@ func! RunPython()
 	exec "w"
 	if &filetype=='python'
 	    set splitbelow
-	    :sp
-	    :term python3.9 %
+	    :sp term://python3.9 %
+	    " :term python3.9 %
 		" exec "!time python3.9 %"
 	endif
 endfunc
@@ -33,7 +33,7 @@ func! SetTitle()
         call setline(1,"#!/usr/bin/env python")
         call append(line("."),"# -*- coding:UTF-8 -*-")
         call append(line(".")+1, "# File Name: ".expand("%"))
-        call append(line(".")+2, "# Author: 🐬 xssaw ")
+        call append(line(".")+2, "# Author: xssaw 🐬")
         call append(line(".")+3, "# Created Time: ".strftime("%c"))
     endif
     normal Go 
