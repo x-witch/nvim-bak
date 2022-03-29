@@ -6,18 +6,21 @@ packer.startup(
     {
         function()
             -- 包管理器
-            use {               
+            use {
                 "wbthomason/packer.nvim",
                 config = function()
                     -- 所有插件加载完成后运行的代码
                 end
             }
-
+            -- 中文文档
+            use "yianwillis/vimcdoc"
             -- 插件缓存
             use 'lewis6991/impatient.nvim'
+            -- 启动时间
+            use 'dstein64/vim-startuptime'
+
 
             ------------- LSP & DAP -------------
-
             -- LSP 基础服务
             use {
                 "neovim/nvim-lspconfig",
@@ -144,8 +147,6 @@ packer.startup(
                 end
             }
 
-
-
             -- 支持 LSP 的 buffer 栏
             use {
                 "akinsho/bufferline.nvim",
@@ -177,6 +178,20 @@ packer.startup(
                 requires = { "kyazdani42/nvim-web-devicons", opt = true }
             })
 
+            -- 开屏页仪表盘
+            use {
+                'glepnir/dashboard-nvim',
+                config = function()
+                    require('conf.dashboard')
+                end
+            }
+            -- use {
+            --     'goolord/alpha-nvim',
+            --     requires = { 'kyazdani42/nvim-web-devicons' },
+            --     config = function ()
+            --         require'alpha'.setup(require'alpha.themes.dashboard'.config)
+            --     end
+            -- }
 
             -- 精美弹窗
             use {
@@ -323,7 +338,6 @@ packer.startup(
                 end
             }
 
-
             -- 搜索时显示条目
             use {
                 "kevinhwang91/nvim-hlslens",
@@ -331,8 +345,6 @@ packer.startup(
                     require("conf.nvim-hlslens")
                 end
             }
-
-
 
             -- 键位绑定器
             -- use {
@@ -343,19 +355,15 @@ packer.startup(
             -- }
 
             -- 翻译插件
-            use {
-                "voldikss/vim-translator",
-                config = function()
-                    require("conf.vim-translator")
-                end
-            }
+            -- use {
+            --     "voldikss/vim-translator",
+            --     config = function()
+            --         require("conf.vim-translator")
+            --     end
+            -- }
+
 
             ------------- 功能增强 -------------
-
-            use {
-                -- 中文文档
-                "yianwillis/vimcdoc"
-            }
 
             -- 显示滚动条
             use {
@@ -377,7 +385,6 @@ packer.startup(
                 event = {"BufRead", "BufNewFile"}
             }
 
-
             -- 自动保存
             use {
                 "Pocco81/AutoSave.nvim",
@@ -388,20 +395,10 @@ packer.startup(
                 event = {"BufRead", "BufNewFile"}
             }
 
-            use {
-                'glepnir/dashboard-nvim',
-                config = function()
-                    require('conf.dashboard')
-                end
-            }
+            -- 快速运行
+            -- use 'thinca/vim-quickrun'
+            use 'skywind3000/asyncrun.vim'
 
-            -- use {
-            --     'goolord/alpha-nvim',
-            --     requires = { 'kyazdani42/nvim-web-devicons' },
-            --     config = function ()
-            --         require'alpha'.setup(require'alpha.themes.dashboard'.config)
-            --     end
-            -- }
 
             -- 自动会话管理
             -- use {
@@ -426,10 +423,6 @@ packer.startup(
                     require("conf.lsp-colors")
                 end
             }
-
-
-            --启动时间
-            use 'dstein64/vim-startuptime'
 
         end,
         -- 使用浮动窗口
