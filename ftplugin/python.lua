@@ -7,43 +7,43 @@ vim.bo.softtabstop = 4
 -- vim.opt.listchars:append("eol:↴")
 
 -- 一键运行python
--- vim.cmd(
--- [[
--- map <F4> :call RunPython()<CR>
--- func! RunPython()
--- 	exec "w"
--- 	if &filetype=='python'
--- 	    set splitbelow
--- 	    :sp
--- 	    :term python %
--- 	    " :sp term://python %
--- 		" exec "!time python3.9 %"
--- 	endif
--- endfunc
--- ]]
--- )
-
 vim.cmd(
 [[
 map <F4> :call RunPython()<CR>
 func! RunPython()
-    exec "w"
-    if &filetype == 'python'
-            if search("@profile")
-                    exec "AsyncRun kernprof -l -v %"
-                    exec "copen"
-                    exec "wincmd p"
-             elseif search("set_trace()")
-                     exec "!python3 %"
-             else
-                    exec "AsyncRun -raw python3 %"
-                    exec "copen"
-                    exec "wincmd p"
-            endif
-    endif
+	exec "w"
+	if &filetype=='python'
+	    set splitbelow
+	    :sp
+	    :term python %
+	    " :sp term://python %
+		" exec "!time python3.9 %"
+	endif
 endfunc
 ]]
 )
+
+-- vim.cmd(
+-- [[
+-- map <F4> :call RunPython()<CR>
+-- func! RunPython()
+--     exec "w"
+--     if &filetype == 'python'
+--             if search("@profile")
+--                     exec "AsyncRun kernprof -l -v %"
+--                     exec "copen"
+--                     exec "wincmd p"
+--              elseif search("set_trace()")
+--                      exec "!python3 %"
+--              else
+--                     exec "AsyncRun -raw python3 %"
+--                     exec "copen"
+--                     exec "wincmd p"
+--             endif
+--     endif
+-- endfunc
+-- ]]
+-- )
 
 -- 自动创建python头部信息
 vim.cmd(
