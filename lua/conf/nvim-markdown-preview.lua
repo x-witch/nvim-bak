@@ -1,4 +1,4 @@
--- https://github.com/davidgranstrom/nvim-markdown-preview
+-- https://github.com/iamcco/markdown-preview.nvim
 
 -- WARN: nvim-markdown-preview 手动安装依赖 : pandoc 和 live-server
 -- 通过 apt 或 yay 安装 pandoc 通过 npm 全局安装 live-server

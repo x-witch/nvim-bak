@@ -89,7 +89,7 @@ packer.startup(
                     {"hrsh7th/cmp-buffer"}, -- 缓冲区补全
                     {"hrsh7th/cmp-cmdline"}, -- 命令补全
                     -- {"f3fora/cmp-spell"}, -- 拼写建议
-                    {"rafamadriz/friendly-snippets"}, -- 提供多种语言的代码片段
+                    -- {"rafamadriz/friendly-snippets"}, -- 提供多种语言的代码片段
                     {"lukas-reineke/cmp-under-comparator"}, -- 让补全结果的排序更加智能
                     {"tzachar/cmp-tabnine", run = "./install.sh"} -- tabnine 源,提供基于 AI 的智能补全
                 },
@@ -97,7 +97,14 @@ packer.startup(
                     require("conf.nvim-cmp")
                 end
             }
-
+            -- 代码段提示
+            use {
+                "L3MON4D3/LuaSnip",
+                requires = {
+                    "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
+                    "rafamadriz/friendly-snippets" --代码段合集
+                }
+            }
             -- git copilot 自动补全
             use {
                 "github/copilot.vim",
@@ -301,10 +308,7 @@ packer.startup(
 
             -- markdown 预览
             use {
-                "davidgranstrom/nvim-markdown-preview",
-                config = function()
-                    require("conf.nvim-markdown-preview")
-                end
+                "iamcco/markdown-preview.nvim"
             }
 
             -- Python 缩进

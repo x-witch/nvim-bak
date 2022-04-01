@@ -10,9 +10,7 @@
 -- https://github.com/lukas-reineke/cmp-under-comparator
 -- https://github.com/tzachar/cmp-tabnine
 -- FIX: tabline 在某些计算机上有 1 个 BUG
--- 当出现：
---    TabNine is not executable
--- 等字样时，需要手动执行（仅限 Manjaro）：
+-- 当出现：TabNine is not executable等字样时，需要手动执行（仅限 Manjaro）：
 --    rm ~/.local/share/nvim/plugged/cmp-tabnine/binaries
 --    ~/.local/share/nvim/plugged/cmp-tabnine/install.sh
 local lspkind = require("lspkind")
@@ -94,8 +92,8 @@ cmp.setup(
                     end
                 }
             ),
-            -- 类似于 IDEA 的功能，如果没进入选择框，tab
-            -- 会选择下一个，如果进入了选择框，tab 会确认当前选择
+            -- 类似于 IDEA 的功能，如果没进入选择框，
+            -- tab 会选择下一个，如果进入了选择框，tab 会确认当前选择
             ["<Tab>"] = cmp.mapping(
                 function(fallback)
                     if cmp.visible() then
