@@ -178,7 +178,8 @@ packer.startup(
             --     end
             -- }
 
-            use({
+            -- 状态栏
+            use {
                 "NTBBloodbath/galaxyline.nvim",
                 -- your statusline
                 config = function()
@@ -186,7 +187,7 @@ packer.startup(
                 end,
                 -- some optional icons
                 requires = { "kyazdani42/nvim-web-devicons", opt = true }
-            })
+            }
 
             -- 开屏页仪表盘
             use {
