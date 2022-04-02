@@ -77,7 +77,7 @@ packer.startup(
                 end
             }
 
-            -- 自动代码补全系列插件
+            -- 自动补全系列插件
             use {
                 "hrsh7th/nvim-cmp",
                 requires = {
@@ -103,7 +103,10 @@ packer.startup(
                 requires = {
                     "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
                     "rafamadriz/friendly-snippets" --代码段合集
-                }
+                },
+                config = function()
+                    require("conf.snippets")
+                end
             }
             -- git copilot 自动补全
             use {
