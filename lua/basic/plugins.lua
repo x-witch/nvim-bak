@@ -149,18 +149,11 @@ packer.startup(
             ------------- 个性化 -------------
 
             -- 优秀的暗色主题
-            -- use {
-            --     "catppuccin/nvim",
-            --     as = "catppuccin",
-            --     config = function()
-            --         require("conf.catppuccin")
-            --     end
-            -- }
             use {
-                use "projekt0n/github-nvim-theme",
-                as = "github-theme",
+                "catppuccin/nvim",
+                as = "catppuccin",
                 config = function()
-                    require("conf.github-theme")
+                    require("conf.catppuccin")
                 end
             }
 
