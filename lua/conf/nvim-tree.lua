@@ -2,7 +2,7 @@
 require("nvim-tree").setup(
     {
         -- 自动关闭
-        auto_close = true,
+        auto_close = false,
         -- 视图
         view = {
             -- 宽度

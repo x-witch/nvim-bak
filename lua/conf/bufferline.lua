@@ -47,7 +47,7 @@ require("bufferline").setup(
                 return s
             end,
 
-        }
+        },
     }
 )
 -- 关闭当前 buffer，由 bufdelete 插件所提供的方法
