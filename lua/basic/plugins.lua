@@ -157,7 +157,7 @@ packer.startup(
                 end
             }
 
-            
+
             -- 支持 LSP 的 buffer 栏
             use {
                 "akinsho/bufferline.nvim",
