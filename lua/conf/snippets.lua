@@ -1,4 +1,3 @@
-
 local ls = require("luasnip")
 -- some shorthands...
 local s = ls.snippet
@@ -489,7 +488,7 @@ require("luasnip/loaders/from_vscode").load() -- Load only python snippets
 -- The directories will have to be structured like eg. <https://github.com/rafamadriz/friendly-snippets> (include
 -- a similar `package.json`)
 --require("luasnip/loaders/from_vscode").load({ paths = { "./my-snippets" } }) -- Load snippets from my-snippets folder
---require("luasnip/loaders/from_vscode").load({ paths = { "/Users/itkey/Documents/my-snippets/" } }) -- Load snippets from my-snippets folder
+--require("luasnip/loaders/from_vscode").load({ paths = { "/Users/用户名/Documents/my-snippets/" } }) -- Load snippets from my-snippets folder
 
 -- You can also use lazy loading so you only get in memory snippets of languages you use
 --require("luasnip/loaders/from_vscode").lazy_load() -- You can pass { paths = "./my-snippets/"} as well
