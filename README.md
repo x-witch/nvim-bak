@@ -13,7 +13,7 @@
 │   ├── conf/                       # 存放插件相关配置文件
 │   ├── dap/                        # 存放 DAP 相关配置文件
 │   └── lsp/                        # 存放 LSP 相关配置文件
-|	└── util						# 存放dashboard头部文件
+|   └── util                        # 存放dashboard头部文件
 └── snippet/                        # 存放自定义代码片段相关文件
 ```
 
