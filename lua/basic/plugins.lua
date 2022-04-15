@@ -13,9 +13,17 @@ packer.startup(
                 end
             }
             -- 中文文档
-            use "yianwillis/vimcdoc"
+            use {
+                "yianwillis/vimcdoc",
+                event = {"BufRead","BufNewFile"}
+            }
             -- 插件缓存
-            use 'lewis6991/impatient.nvim'
+            use {
+                'lewis6991/impatient.nvim',
+                config = function()
+                    require("conf.impatient")
+                end
+            }
             -- 启动时间
             use 'dstein64/vim-startuptime'
 
@@ -294,6 +302,16 @@ packer.startup(
                 "ur4ltz/surround.nvim",
                 config = function()
                     require("conf.surround")
+                end
+            }
+
+            -- 快速更改单词
+            use {
+                "AndrewRadev/switch.vim",
+                load_file = true,
+                event = {"BufRead", "BufNewFile"},
+                config = function()
+                    require("conf.swich")
                 end
             }
 

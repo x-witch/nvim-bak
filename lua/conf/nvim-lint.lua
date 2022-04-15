@@ -7,7 +7,7 @@ require("lint").linters_by_ft = {
     -- typescript = {"eslint"},
     -- go = {"golangcilint"}
 }
--- 配置 pylint，pylint 配置文件需要自己准备，这里不再演示
+-- 配置 pylint
 require("lint.linters.pylint").args = {
     "-f",
     "json",

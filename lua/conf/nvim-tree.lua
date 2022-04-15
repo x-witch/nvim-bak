@@ -16,7 +16,7 @@ require("nvim-tree").setup(
         },
         diagnostics = {
             -- 是否启用文件诊断信息
-            enable = true,
+            enable = false,
             icons = {
                 hint = "",
                 info = "",

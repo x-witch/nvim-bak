@@ -14,8 +14,7 @@ require("catppuccin").setup(
             variables = "NONE"
         },
         -- 为不同的插件统一样式风格
-        -- 尽管这里有一些插件还没有安装，但是先将它们
-        -- 设置为 true 并不影响
+        -- 尽管这里有一些插件还没有安装，但是先将它们设置为true并不影响
         integrations = {
             cmp = true,
             gitsigns = true,
@@ -51,10 +50,31 @@ require("catppuccin").setup(
                     information = "underline"
                 }
             },
-            -- 后面我们自己会手动设置
+            -- 手动设置
             lsp_saga = false
         }
     }
 )
 -- 应用主题
 vim.cmd([[colorscheme catppuccin]])
+
+-- 自定义高亮组
+vim.cmd([[
+ highlight Lspsaga guifg=#96CDF8
+]])
+
+-- 高亮组风格统一
+vim.cmd(
+    [[
+" 重命名边框
+highlight link LspSagaRenameBorder Lspsaga
+" 悬浮文档边框
+highlight link LspSagaHoverBorder Lspsaga
+" 悬浮文档分割线
+highlight link LspSagaDocTruncateLine Lspsaga
+" 代码诊断边框
+highlight link LspSagaDiagnosticBorder Lspsaga
+" 代码诊断分割线
+highlight link LspSagaDiagnosticTruncateLine Lspsaga
+]]
+)

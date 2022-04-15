@@ -15,7 +15,7 @@ local dap_config = {
 }
 
 
--- 设置调试器
+-- 设置调试器配置
 for dap_name, dap_options in pairs(dap_config) do
     dap.adapters[dap_name] = dap_options.adapters
     dap.configurations[dap_name] = dap_options.configurations
