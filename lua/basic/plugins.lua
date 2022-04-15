@@ -24,6 +24,14 @@ packer.startup(
                     require("conf.impatient")
                 end
             }
+
+            use {
+                "nathom/filetype.nvim",
+                config = function()
+                    require("conf.filetype")
+                end
+            }
+
             -- 启动时间
             use 'dstein64/vim-startuptime'
 
@@ -157,14 +165,20 @@ packer.startup(
             ------------- 个性化 -------------
 
             -- 优秀的暗色主题
+            -- use {
+            --     "catppuccin/nvim",
+            --     as = "catppuccin",
+            --     config = function()
+            --         require("conf.catppuccin")
+            --     end
+            -- }
+
             use {
-                "catppuccin/nvim",
-                as = "catppuccin",
+                'Mofiqul/vscode.nvim',
                 config = function()
-                    require("conf.catppuccin")
+                    require("conf.vscode")
                 end
             }
-
 
             -- 支持 LSP 的 buffer 栏
             use {
