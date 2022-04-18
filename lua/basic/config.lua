@@ -22,9 +22,9 @@ local platform_undotree = {
 
 -- 获取平台 代码片段存储路径
 local platform_snippet = {
-    MAC = "~/.config/nvim/snippet",
-    UNIX = "~/.config/nvim/snippet",
-    WINDOWS = "C:\\Users\\%USERNAME%\\AppData\\Local\\nvim\\snippet"
+    MAC = "~/.config/nvim/snippets",
+    UNIX = "~/.config/nvim/snippets",
+    WINDOWS = "C:\\Users\\%USERNAME%\\AppData\\Local\\nvim\\snippets"
 }
 
 -- 获取平台 lint 配置文件路径
