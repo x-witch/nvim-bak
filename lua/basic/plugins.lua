@@ -353,7 +353,7 @@ packer.startup(
                 "Vimjas/vim-python-pep8-indent"
             }
 
-            -- emmet 缩写
+            -- emmet 补全
             use {
                 "mattn/emmet-vim",
                 ft = {
