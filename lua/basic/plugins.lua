@@ -357,7 +357,7 @@ packer.startup(
             use {
                 "mattn/emmet-vim",
                 ft = {
-                    "html","javascript","typescript","vue","xml"
+                    "html","css","javascript","typescript","vue","xml"
                 }
             }
 
