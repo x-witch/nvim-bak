@@ -201,7 +201,6 @@ packer.startup(
                  end
              }
 
-         
 
             -- 开屏页仪表盘
             use {
@@ -214,7 +213,7 @@ packer.startup(
             --     'goolord/alpha-nvim',
             --     requires = { 'kyazdani42/nvim-web-devicons' },
             --     config = function ()
-            --         require'alpha'.setup(require'alpha.themes.dashboard'.config)
+            --         require("conf.alpha")
             --     end
             -- }
 
