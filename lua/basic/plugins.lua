@@ -174,9 +174,9 @@ packer.startup(
             -- }
 
             use {
-                'Mofiqul/vscode.nvim',
+                'folke/tokyonight.nvim',
                 config = function()
-                    require("conf.vscode")
+                    require("conf.tokyonight")
                 end
             }
 
@@ -193,24 +193,15 @@ packer.startup(
             }
 
             -- 状态栏
-            -- use {
-            --     'nvim-lualine/lualine.nvim',
-            --     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-            --     config = function()
-            --         require("conf.lualine")
-            --     end
-            -- }
-
-            -- 状态栏
             use {
-                "NTBBloodbath/galaxyline.nvim",
-                -- your statusline
-                config = function()
-                    require("galaxyline.themes.eviline")
-                end,
-                -- some optional icons
-                requires = { "kyazdani42/nvim-web-devicons", opt = true }
-            }
+                 'nvim-lualine/lualine.nvim',
+                 requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+                 config = function()
+                     require("conf.lualine")
+                 end
+             }
+
+         
 
             -- 开屏页仪表盘
             use {
