@@ -263,7 +263,11 @@ packer.startup(
                     require("conf.telescope")
                 end
             }
-
+            use {
+                "nvim-telescope/telescope-fzf-native.nvim",
+                run = "make",
+            }
+            use "nvim-telescope/telescope-ui-select.nvim"
 
             ------------- 代码编辑 -------------
 
@@ -421,9 +425,13 @@ packer.startup(
             }
 
             -- 快速运行
-            -- use 'thinca/vim-quickrun'
-            use 'skywind3000/asyncrun.vim'
-
+            use {
+                'michaelb/sniprun',
+                run = 'bash ./install.sh',
+                config = function()
+                    require("conf.sniprun")
+                end
+            }
 
             -- 自动会话管理
             -- use {

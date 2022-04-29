@@ -41,7 +41,7 @@ vim.g.nvim_tree_icons = {
         staged = "✓",
         unmerged = "",
         renamed = "➜",
-        untracked = "",
+        untracked = "U",
         deleted = "",
         ignored = ""
     },
