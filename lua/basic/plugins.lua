@@ -203,12 +203,6 @@ packer.startup(
 
 
             -- 开屏页仪表盘
-            -- use {
-            --     'glepnir/dashboard-nvim',
-            --     config = function()
-            --         require('conf.dashboard')
-            --     end
-            -- }
             use {
                 'goolord/alpha-nvim',
                 requires = { 'kyazdani42/nvim-web-devicons' },
