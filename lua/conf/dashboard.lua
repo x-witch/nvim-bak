@@ -41,4 +41,4 @@ vim.g.dashboard_custom_section = {
         --         command = "Telescope man_pages",
         -- },
 }
-vim.g.dashboard_disable_at_vimenter = 0
+-- vim.g.dashboard_disable_at_vimenter = 0

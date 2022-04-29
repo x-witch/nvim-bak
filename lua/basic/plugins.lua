@@ -165,20 +165,20 @@ packer.startup(
             ------------- 个性化 -------------
 
             -- 优秀的暗色主题
-            -- use {
-            --     "catppuccin/nvim",
-            --     as = "catppuccin",
-            --     config = function()
-            --         require("conf.catppuccin")
-            --     end
-            -- }
-
             use {
-                'folke/tokyonight.nvim',
+                "catppuccin/nvim",
+                as = "catppuccin",
                 config = function()
-                    require("conf.tokyonight")
+                    require("conf.catppuccin")
                 end
             }
+
+            -- use {
+            --     'folke/tokyonight.nvim',
+            --     config = function()
+            --         require("conf.tokyonight")
+            --     end
+            -- }
 
             -- 支持 LSP 的 buffer 栏
             use {
@@ -203,19 +203,19 @@ packer.startup(
 
 
             -- 开屏页仪表盘
-            use {
-                'glepnir/dashboard-nvim',
-                config = function()
-                    require('conf.dashboard')
-                end
-            }
             -- use {
-            --     'goolord/alpha-nvim',
-            --     requires = { 'kyazdani42/nvim-web-devicons' },
-            --     config = function ()
-            --         require("conf.alpha")
+            --     'glepnir/dashboard-nvim',
+            --     config = function()
+            --         require('conf.dashboard')
             --     end
             -- }
+            use {
+                'goolord/alpha-nvim',
+                requires = { 'kyazdani42/nvim-web-devicons' },
+                config = function ()
+                    require("conf.alpha")
+                end
+            }
 
             -- 精美弹窗
             use {
