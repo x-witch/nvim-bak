@@ -21,3 +21,12 @@ vim.cmd([[
 au BufEnter * lua require('lint').try_lint()
 au BufWritePost * lua require('lint').try_lint()
 ]])
+-- vim.api.nvim_create_autocmd(
+--     {"InsertLeave", "TextChanged", "BufNew"},
+--     {
+--         pattern = "*",
+--         callback = function()
+--             require("lint").try_lint()
+--         end
+--     }
+-- )
