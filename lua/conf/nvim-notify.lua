@@ -1,22 +1,48 @@
 -- https://github.com/rcarriga/nvim-notify
-vim.notify = require("notify")
-vim.notify.setup(
-    {
-        -- 动画样式
-        -- fade_in_slide_out
-        -- fade
-        -- slide
-        -- static
-        stages = "fade",
-        -- 超时时间，默认 5s
-        timeout = 2000
-    }
-)
--- 使用案例：
--- 信息、级别、标题
--- 级别有：info、warn、error、debug、trace
--- 示例：
--- vim.notify("hello world", "info", {title = "info"})
+local status_ok, notify =  pcall(require, "notify")
+if not status_ok then
+  vim.notify("notify module not found!")
+  return
+end
+
+vim.notify = notify
+notify.setup({
+  -- Animation style (see below for details)
+  stages = "fade_in_slide_out",
+
+  -- Function called when a new window is opened, use for changing win settings/config
+  on_open = nil,
+
+  -- Function called when a window is closed
+  on_close = nil,
+
+  -- Render function for notifications. See notify-render()
+  render = "default",
+
+  -- Default timeout for notifications
+  timeout = 5000,
+
+  -- Max number of columns for messages
+  max_width = nil,
+  -- Max number of lines for a message
+  max_height = nil,
+
+  -- For stages that change opacity this is treated as the highlight behind the window
+  -- Set this to either a highlight group, an RGB hex value e.g. "#000000" or a function returning an RGB code for dynamic values
+  background_colour = "Normal",
+
+  -- Minimum width for notification windows
+  minimum_width = 50,
+
+  -- Icons for the different levels
+  icons = {
+    ERROR = "",
+    WARN = "",
+    INFO = "",
+    DEBUG = "",
+    TRACE = "✎",
+  },
+})
 -- 显示历史弹窗记录（需安装 telescope 插件）
 vim.keybinds.gmap(
     "n",

@@ -5,15 +5,15 @@
 ├── ftplugin/                       # 存放不同文件类型的缩进规则文件
 ├── lint/                           # 存放各种语言的代码检查规范配置文件，如 pylint 等
 ├── lua/
-│   ├── basic/                      # 存放基本配置项文件
-│   │   ├── config.lua              # 用户自定义配置文件
-│   │   ├── keybinds.lua            # 键位绑定文件
-│   │   ├── plugins.lua             # 依赖插件的文件
-│   │   └── settings.lua            # neovim 基本配置项的文件
-│   ├── conf/                       # 存放插件相关配置文件
-│   ├── dap/                        # 存放 DAP 相关配置文件
-│   └── lsp/                        # 存放 LSP 相关配置文件
-└── snippet/                        # 存放自定义代码片段相关文件
+│   ├── basic/                      # 存放核心配置
+│   │   ├── custom.lua              # 用户自定义设置
+│   │   ├── keybinds.lua            # 案件映射
+│   │   ├── plugins.lua             # 依赖插件
+│   │   └── options.lua             # nvim选项
+│   ├── conf/                       # 存放插件配置
+│   ├── dap/                        # 存放 DAP 相关
+│   └── lsp/                        # 存放 LSP 相关
+└── snippets/                       # 存放自定义代码片段相关
 ```
 
 ### 插件快捷键

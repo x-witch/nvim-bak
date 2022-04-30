@@ -104,21 +104,20 @@ packer.startup(
                     {"hrsh7th/cmp-path"}, -- 路径补全
                     {"hrsh7th/cmp-buffer"}, -- 缓冲区补全
                     {"hrsh7th/cmp-cmdline"}, -- 命令补全
+                    {"saadparwaiz1/cmp_luasnip"}, -- Snippets source for nvim-cmp
                     -- {"f3fora/cmp-spell"}, -- 拼写建议
                     -- {"rafamadriz/friendly-snippets"}, -- 提供多种语言的代码片段
                     {"lukas-reineke/cmp-under-comparator"}, -- 让补全结果的排序更加智能
-                    {"tzachar/cmp-tabnine", run = "./install.sh"} -- tabnine 源,提供基于 AI 的智能补全
                 },
                 config = function()
-                    require("conf.nvim-cmp")
+                    require("conf.cmp")
                 end
             }
-            -- 代码段提示
+            -- 代码片段
             use {
                 "L3MON4D3/LuaSnip",
                 requires = {
-                    "saadparwaiz1/cmp_luasnip", -- Snippets source for nvim-cmp
-                    "rafamadriz/friendly-snippets" --代码段合集
+                    "rafamadriz/friendly-snippets"
                 },
                 config = function()
                     require("conf.snippets")
@@ -131,6 +130,15 @@ packer.startup(
                     require("conf.copilot")
                 end
             }
+            -- tabnine 源,提供基于 AI 的智能补全
+            use {
+                "tzachar/cmp-tabnine",
+                run = "./install.sh",
+                config = function()
+                    require("conf.tabnine")
+                end
+            }
+
 
             -- 代码调试基础插件
             use {
@@ -376,12 +384,12 @@ packer.startup(
             }
 
             -- 键位绑定器
-            -- use {
-            --     "folke/which-key.nvim",
-            --     config = function()
-            --         require("conf.which-key")
-            --     end
-            -- }
+            use {
+                "folke/which-key.nvim",
+                config = function()
+                    require("conf.which-key")
+                end
+            }
 
             -- 翻译插件
             -- use {

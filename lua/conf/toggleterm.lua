@@ -1,83 +1,77 @@
--- https://github.com/akinsho/toggleterm.nvim
-local Toggleterm = require("toggleterm")
-Toggleterm.setup(
-    {
-        --  开启的终端默认进入插入模式
-        start_in_insert = true,
-        -- 设置终端打开的大小
-        size = 6,
-        -- 打开普通终端时，关闭拼写检查
-        on_open = function()
-            vim.cmd("setlocal nospell")
-        end
-    }
-)
--- 新建终端
+local status_ok, toggleterm = pcall(require, "toggleterm")
+if not status_ok then
+	return
+end
+
+toggleterm.setup({
+	size = 20,
+  -- TODO: add my own keymapping to <space-t>
+	open_mapping = [[<c-\>]],
+	hide_numbers = false,
+	shade_filetypes = {},
+	shade_terminals = true,
+	shading_factor = 3,
+	start_in_insert = true,
+	insert_mappings = true,
+	persist_size = true,
+	direction = "float",
+	close_on_exit = true,
+	shell = vim.o.shell,
+	float_opts = {
+		border = "curved",
+		winblend = 3,
+		highlights = {
+			border = "Normal",
+			background = "Normal",
+		},
+	},
+})
+
+function _G.set_terminal_keymaps()
+  local opts = {noremap = true}
+  -- vim.api.nvim_buf_set_keymap(0, 't', '<esc>', [[<C-\><C-n>]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', 'jk', [[<C-\><C-n>]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-h>', [[<C-\><C-n><C-W>h]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-j>', [[<C-\><C-n><C-W>j]], opts)
+  vim.api.nvim_buf_set_keymap(0, 't', '<C-k>', [[<C-\><C-n><C-W>k]], opts)
+  -- ctrl l preserved for clear terminal content
+  -- vim.api.nvim_buf_set_keymap(0, 't', '<C-l>', [[<C-\><C-n><C-W>l]], opts)
+end
+
+vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
+
 local Terminal = require("toggleterm.terminal").Terminal
-local function inInsert()
-    -- 删除 Esc 的映射
-    vim.keybinds.dgmap("t", "<Esc>")
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+
+-- NOTE: need to install lazygit first
+-- sudo add-apt-repository ppa:lazygit-team/release
+-- sudo apt-get update
+-- sudo apt-get install lazygit
+-- TODO: 这个命令暂时不起作用
+function _LAZYGIT_TOGGLE()
+	lazygit:toggle()
 end
--- 新建浮动终端
-local floatTerm =
-    Terminal:new(
-    {
-        hidden = true,
-        direction = "float",
-        float_opts = {
-            border = "double"
-        },
-        on_open = function(term)
-            inInsert()
-            -- 浮动终端中 Esc 是退出
-            vim.keybinds.bmap(term.bufnr, "t", "<Esc>", "<C-\\><C-n>:close<CR>", vim.keybinds.opts)
-        end,
-        on_close = function()
-            -- 重新映射 Esc
-            vim.keybinds.gmap("t", "<Esc>", "<C-\\><C-n>", vim.keybinds.opts)
-        end
-    }
-)
--- 新建 lazygit 终端
-local lazyGit =
-    Terminal:new(
-    {
-        cmd = "lazygit",
-        hidden = true,
-        direction = "float",
-        float_opts = {
-            border = "double"
-        },
-        on_open = function(term)
-            inInsert()
-            -- lazygit 中 q 是退出
-            vim.keybinds.bmap(term.bufnr, "i", "q", "<cmd>close<CR>", vim.keybinds.opts)
-        end,
-        on_close = function()
-            -- 重新映射 Esc
-            vim.keybinds.gmap("t", "<Esc>", "<C-\\><C-n>", vim.keybinds.ns_opt)
-        end
-    }
-)
--- 定义新的方法
-Toggleterm.float_toggle = function()
-    floatTerm:toggle()
+
+local node = Terminal:new({ cmd = "node", hidden = true })
+
+function _NODE_TOGGLE()
+	node:toggle()
 end
-Toggleterm.lazygit_toggle = function()
-    lazyGit:toggle()
+
+local ncdu = Terminal:new({ cmd = "ncdu", hidden = true })
+
+function _NCDU_TOGGLE()
+	ncdu:toggle()
 end
--- 退出终端插入模式
-vim.keybinds.gmap("t", "<Esc>", "<C-\\><C-n>", vim.keybinds.opts)
--- 打开普通终端
-vim.keybinds.gmap("n", "<leader>tt", "<cmd>exe v:count.'ToggleTerm'<CR>", vim.keybinds.opts)
--- 打开浮动终端
-vim.keybinds.gmap("n", "<leader>tf", "<cmd>lua require('toggleterm').float_toggle()<CR>", vim.keybinds.opts)
--- 打开lazy git 终端
-vim.keybinds.gmap("n", "<leader>tg", "<cmd>lua require('toggleterm').lazygit_toggle()<CR>", vim.keybinds.opts)
--- 打开或关闭所有终端
-vim.keybinds.gmap("n", "<leader>ta", "<cmd>ToggleTermToggleAll<CR>", vim.keybinds.opts)
--- 要需创建多个终端，可：
--- 1 <键位> leader tt
--- 2 <键位>
--- ... <键位>
--- 另外，上面我们新建了 2 个特殊终端，所以普通终端的顺序应该是从 3 开始
+
+local htop = Terminal:new({ cmd = "htop", hidden = true })
+
+function _HTOP_TOGGLE()
+	htop:toggle()
+end
+
+local python = Terminal:new({ cmd = "python", hidden = true })
+
+function _PYTHON_TOGGLE()
+	python:toggle()
+end
