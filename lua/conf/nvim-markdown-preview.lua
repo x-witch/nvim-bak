@@ -9,3 +9,7 @@
 -- 主题：github solarized-light solarized-dark
 vim.g.nvim_markdown_preview_theme = "github"
 vim.g.nvim_markdown_preview_format = "markdown"
+vim.cmd [[
+  let g:preview_markdown_auto_update = 1
+  let g:preview_markdown_parser = "glow"
+]]
