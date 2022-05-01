@@ -7,7 +7,5 @@
 -- 后续使用 :MarkdownPreview 即可打开预览
 
 -- 主题：github solarized-light solarized-dark
-vim.g.nvim.markdown_auto_update = true
 vim.g.nvim_markdown_preview_theme = "github"
 vim.g.nvim_markdown_preview_format = "markdown"
--- vim.g.nvim_markdown_parser = "glow"
