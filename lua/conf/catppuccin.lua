@@ -1,5 +1,9 @@
 -- https://github.com/catppuccin/nvim
-require("catppuccin").setup(
+local status_ok, catppuccin = pcall(require, "catppuccin")
+if not status_ok then
+  return
+end
+catppuccin.setup(
     {
         -- 透明背景
         transparent_background = false,
