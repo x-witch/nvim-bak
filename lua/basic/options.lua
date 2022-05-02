@@ -21,12 +21,15 @@ local options = {
     relativenumber = true,
     -- 设定光标上下两侧最少保留的屏幕行数
     scrolloff = 10,
+    sidescrolloff = 10,
     -- 是否支持鼠标操作
     mouse = "a",
     -- 是否启用系统剪切板
     clipboard = "unnamedplus",
     -- 是否开启备份文件
     backup = false,
+    -- 是否换行
+    wrap = false,
     -- 是否开启交换文件
     swapfile = false,
     -- 是否特殊显示空格等字符
