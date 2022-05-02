@@ -7,7 +7,7 @@
 ├── lua/
 │   ├── basic/                      # 存放核心配置
 │   │   ├── custom.lua              # 用户自定义设置
-│   │   ├── keybinds.lua            # 案件映射
+│   │   ├── keybinds.lua            # 按键映射
 │   │   ├── plugins.lua             # 依赖插件
 │   │   └── options.lua             # nvim选项
 │   ├── conf/                       # 存放插件配置
