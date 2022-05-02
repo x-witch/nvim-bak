@@ -2,10 +2,29 @@
 
 -- NOTE: switch 手动定义需要增加的反意单词
 local switch_words = {
+    -- status
     {"true", "false"},
     {"on", "off"},
     {"yes", "no"},
     {"disable", "enable"},
+    {"open", "close"},
+    {"in", "out"},
+    {"resolve", "reject"},
+    -- event
+    {"start", "end"},
+    {"before", "after"},
+    {"from", "to"},
+    {"relative", "absolute"},
+    -- direction
+    {"up", "down"},
+    {"left", "right"},
+    {"row", "column"},
+    -- color
+    {"drak", "light"},
+    {"white", "black"},
+    -- network
+    {"get", "post"},
+    -- symbol
     {"+", "-"},
     {">", "<"},
     {"=", "!="}

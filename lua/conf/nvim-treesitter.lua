@@ -1,17 +1,38 @@
 -- https://github.com/nvim-treesitter/nvim-treesitter
 -- https://github.com/p00f/nvim-ts-rainbow
-require("nvim-treesitter.configs").setup(
+local status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
+if not status_ok then
+  vim.notify("treesitter not found!")
+  return
+end
+treesitter.setup(
     {
         -- 安装的高亮支持来源，安装language parser,:TSInstallInfo查看
-        ensure_installed = {"vim","lua","python"},
+        ensure_installed = { "vim", "lua", "python", "json", "yaml", "html"},
+        ignore_install = { "" },
         -- 同步下载高亮支持
         sync_install = false,
         -- 高亮相关
         highlight = {
             -- 启用高亮支持
             enable = true,
+            disable = { "" },
             -- 使用 treesitter 高亮而不是 neovim 内置的高亮
             additional_vim_regex_highlighting = false
+        },
+        -- 根据当前上下文定义文件类型，由 nvim-ts-context-commentstring 插件提供
+        context_commentstring = {
+            enable = true,
+            config = {
+                -- Languages that have a single comment style
+                typescript = "// %s",
+                css = "/* %s */",
+                scss = "/* %s */",
+                html = "<!-- %s -->",
+                svelte = "<!-- %s -->",
+                vue = "<!-- %s -->",
+                json = "",
+            },
         },
         -- 范围选择
         incremental_selection = {
@@ -35,13 +56,22 @@ require("nvim-treesitter.configs").setup(
         -- 彩虹括号，由 nvim-ts-rainbow 插件提供
         rainbow = {
             enable = true,
-            extended_mode = true
+            extended_mode = true,
+            max_file_lines = 1000,
             -- colors = {}, -- table of hex strings
             -- termcolors = {} -- table of colour name strings
         },
-        -- 根据当前上下文定义文件类型，由 nvim-ts-context-commentstring 插件提供
-        context_commentstring = {
-            enable = true
-        }
+        autotag = { enable = false },
+        -- matchup plugin
+        -- https://github.com/andymass/vim-matchup
+        matchup = {
+            enable = false, -- mandatory, false will disable the whole extension
+            -- disable = { "c", "ruby" },  -- optional, list of language that will be disabled
+            -- [options]
+        },
+        -- autopairs plugin
+        autopairs = {
+            enable = false,
+        },
     }
 )
