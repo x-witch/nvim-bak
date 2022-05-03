@@ -134,7 +134,7 @@ keymap("n", "<leader>fh", "<cmd>Telescope help_tags theme=dropdown<CR>", opts)
 -- 查找最近打开的文件
 keymap("n", "<leader>fo", "<cmd>Telescope oldfiles theme=dropdown<CR>", opts)
 -- 查找 marks 标记
-keymap("n", "<leader>fm", "<cmd>Telescope marks theme=dropdown<CR>", opts)
+-- keymap("n", "<leader>fm", "<cmd>Telescope marks theme=dropdown<CR>", opts)
 
 
 
