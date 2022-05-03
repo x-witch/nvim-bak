@@ -140,7 +140,7 @@ return packer.startup(function(use)
    use "akinsho/bufferline.nvim"  -- 顶部标签栏
    use "famiu/bufdelete.nvim" -- 删除 buffer 时不影响现有布局
    use 'nvim-lualine/lualine.nvim'  -- 底部状态栏
-   -- 加速 j 或 k 移动
+   -- 加速 j 和 k 移动
    use {
        "PHSix/faster.nvim",
        event = "VimEnter"
@@ -172,7 +172,8 @@ return packer.startup(function(use)
        "nvim-treesitter/nvim-treesitter",
        run = { ":TSupdate" }
    }
-   use "numToStr/Comment.nvim"  -- 代码注释
+   -- use "numToStr/Comment.nvim"  -- 代码注释
+   use "terrortylor/nvim-comment"  -- 代码注释
    use "JoosepAlviste/nvim-ts-context-commentstring"
    use "p00f/nvim-ts-rainbow" -- 彩虹括号
    use "sbdchd/neoformat"  -- 代码格式化

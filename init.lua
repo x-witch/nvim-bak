@@ -1,6 +1,6 @@
 -- 加载配置项
 require("basic.options")
-require("basic.keybinds")
+require("basic.keymaps")
 require("basic.plugins")
 require("basic.custom")
 require('conf')

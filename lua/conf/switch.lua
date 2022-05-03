@@ -47,5 +47,4 @@ end
 
 -- 放入全局变量
 vim.g.switch_custom_definitions = push_words
--- 设置快捷键
-vim.keybinds.gmap("n", "gs", ":Switch<cr>", vim.keybinds.opts)
+

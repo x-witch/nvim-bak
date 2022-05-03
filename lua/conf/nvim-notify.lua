@@ -43,10 +43,3 @@ notify.setup({
     TRACE = "✎",
   },
 })
--- 显示历史弹窗记录（需安装 telescope 插件）
-vim.keybinds.gmap(
-    "n",
-    "<leader>fn",
-    "<cmd>lua require('telescope').extensions.notify.notify()<CR>",
-    vim.keybinds.opts
-)

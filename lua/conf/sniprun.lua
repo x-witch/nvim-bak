@@ -57,5 +57,3 @@ sniprun.setup({
                                    --# possible values are 'none', 'single', 'double', or 'shadow'
   live_mode_toggle='off'       --# live mode toggle, see Usage - Running for more info
 })
-vim.keybinds.gmap("n", "<leader>rf", ":%SnipRun<cr>", vim.keybinds.opts)
-vim.keybinds.gmap("v", "<leader>rs", ":%SnipRun<cr>", vim.keybinds.opts)
