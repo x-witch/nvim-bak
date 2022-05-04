@@ -78,7 +78,6 @@ nvim_tree.setup({
   open_on_setup_file = false,
   open_on_tab = false,
   sort_by = "name",
-  update_cwd = false,
   view = {
     width = 30,
     height = 30,
@@ -192,7 +191,7 @@ require "nvim-tree.events".on_file_created(function(file) vim.cmd("edit " .. fil
 
 -- auto close feature
 vim.cmd(
-  [[
+[[
     autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
 ]]
 )

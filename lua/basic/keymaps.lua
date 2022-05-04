@@ -58,10 +58,14 @@ keymap("i", "<A-l>", "<right>", opts)
    ------------- 插件快捷键 -------------
 
 -- nvim-tree 文件目录
--- 按 leader 1 打开文件树
+--  <leader>1 打开文件树
 keymap("n", "<leader>1", "<cmd>NvimTreeToggle<CR>", opts)
 -- 按 leader fc 在文件树中找到当前以打开文件的位置
 keymap("n", "<leader>fc", "<cmd>NvimTreeFindFile<CR>", opts)
+
+-- aerial 代码大纲
+-- 打开、关闭大纲预览 <leader>a
+
 
 -- copilot
 keymap("i", "<C-l>", "copilot#Accept('')", {silent = true, expr = true})
@@ -87,7 +91,6 @@ keymap("n", "<leader>cf", "<cmd>Neoformat<CR>", opts)
 
 -- nvim-dap-ui 显示或隐藏调试界面
 keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<CR>", opts)
-
 --nvim-dap调试
 -- 打断点
 keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", opts)
@@ -117,7 +120,7 @@ keymap("n", "<leader>rf", ":%SnipRun<cr>", opts)
 keymap("v", "<leader>rs", ":%SnipRun<cr>", opts)
 
 -- vista打开大纲预览
-keymap("n", "<leader>2", "<cmd>Vista!!<CR>", opts)
+-- keymap("n", "<leader>2", "<cmd>Vista!!<CR>", opts)
 
 -- switch
 keymap("n", "gs", ":Switch<cr>", opts)
@@ -137,7 +140,17 @@ keymap("n", "<leader>fo", "<cmd>Telescope oldfiles theme=dropdown<CR>", opts)
 -- keymap("n", "<leader>fm", "<cmd>Telescope marks theme=dropdown<CR>", opts)
 
 
-
+-- ToggleTerm 内置终端
+-- 退出终端插入模式
+keymap("t", "<Esc>", "<C-\\><C-n>", opts)
+-- 打开普通终端
+keymap("n", "<leader>tt", "<cmd>exe v:count.'ToggleTerm'<CR>", opts)
+-- 打开浮动终端
+-- keymap("n", "<leader>tf", "<cmd>lua require('toggleterm').float_toggle()<CR>", opts)
+-- 打开lazy git 终端
+-- keymap("n", "<leader>tg", "<cmd>lua require('toggleterm').lazygit_toggle()<CR>", opts)
+-- 打开或关闭所有终端
+-- keymap("n", "<leader>ta", "<cmd>ToggleTermToggleAll<CR>", opts)
 
 
 

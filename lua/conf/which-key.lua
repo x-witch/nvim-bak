@@ -80,8 +80,10 @@ local opts = {
 }
 
 local mappings = {
-  ["a"] = { "<cmd>Alpha<cr>", "Welcome" },
-  ["r"] = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+  ["a"] = {
+    "<cmd>AerialToggle<CR>", "Outline"
+  },
+  -- ["r"] = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
   -- ["b"] = {
   --   "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
   --   "Buffers",
@@ -90,13 +92,13 @@ local mappings = {
   -- ["w"] = { "<cmd>w!<CR>", "Save" },
   -- ["q"] = { "<cmd>q!<CR>", "Quit" },
   -- ["/"] = { "<cmd>lua require('Comment').toggle()<CR>", "Comment" },
-  ["C"] = { "<cmd>%bd|e#<CR>", "Close Other Buffers" },
+  -- ["C"] = { "<cmd>%bd|e#<CR>", "Close Other Buffers" },
   -- ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-  ["f"] = {
-    "<cmd>lua require('telescope.builtin').find_files()<cr>",
-    -- "<cmd>lua require('telescope').extensions.frecenncy.frecency(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
-    "Find files",
-  },
+  -- ["f"] = {
+  --   "<cmd>lua require('telescope.builtin').find_files()<cr>",
+  --   -- "<cmd>lua require('telescope').extensions.frecenncy.frecency(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
+  --   "Find files",
+  -- },
   -- ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["F"] = { "<cmd>lua require('telescope').extensions.live_grep_raw.live_grep_raw(require('telescope.themes').get_ivy())<cr>", "Find Text" },
   ["s"] = {
@@ -108,19 +110,16 @@ local mappings = {
     -- "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>",
     "Find Symobls",
   },
-  ["p"] = { "<cmd>Telescope projects<cr>", "Projects" },
+  -- ["p"] = { "<cmd>Telescope projects<cr>", "Projects" },
+  --
+  -- ["t"] = {
+  --   "<cmd>UltestSummary<CR>", "Unit Test"
+  -- },
 
-  ["t"] = {
-    "<cmd>UltestSummary<CR>", "Unit Test"
-  },
-
-  ["o"] = {
-    "<cmd>AerialToggle<CR>", "Outline"
-  },
-  ["v"] = {
-    "<cmd>lua require('telescope').extensions.neoclip.default(require('telescope.themes').get_ivy())<cr>",
-    "Clipboard Manager"
-  },
+  -- ["v"] = {
+  --   "<cmd>lua require('telescope').extensions.neoclip.default(require('telescope.themes').get_ivy())<cr>",
+  --   "Clipboard Manager"
+  -- },
 
   c = {
     name = "CMake",
