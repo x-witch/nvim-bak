@@ -1,5 +1,5 @@
 -- https://github.com/nvim-telescope/telescope.nvim
--- WARN: telescope 手动安装依赖 fd 和 repgrep 和 fzf
+-- WARN: telescope 手动安装依赖 fd 和 ripgrep 和 fzf
 -- https://github.com/sharkdp/fd
 -- https://github.com/BurntSushi/ripgrep
 -- NOTE: install ripgrep for live_grep picker

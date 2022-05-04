@@ -143,6 +143,14 @@ aerial.setup({
   on_attach = function(bufnr)
     -- Toggle the aerial window with <leader>a
     -- vim.api.nvim_buf_set_keymap(bufnr, 'n', 'o', '<cmd>AerialGo<CR>', {})
+    -- 打开、关闭大纲预览
+    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>a', '<cmd>AerialToggle!<CR>', {})
+    -- -- 移动到上一个/下一个子项目，同 <C-k> 和 <C-j>
+    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '{', '<cmd>AerialPrev<CR>', {})
+    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '}', '<cmd>AerialNext<CR>', {})
+    -- -- 移动到上一个/下一个大项目
+    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '[[', '<cmd>AerialPrevUp<CR>', {})
+    -- vim.api.nvim_buf_set_keymap(bufnr, 'n', ']]', '<cmd>AerialNextUp<CR>', {})
   end,
 
   -- Automatically open aerial when entering supported buffers.

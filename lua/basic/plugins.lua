@@ -150,7 +150,7 @@ return packer.startup(function(use)
 
    -- 目录大纲
    use "kyazdani42/nvim-tree.lua"  -- 文件树
-   use "liuchengxu/vista.vim"  -- 代码大纲
+   -- use "liuchengxu/vista.vim"  -- 代码大纲
    use "stevearc/aerial.nvim"  -- 代码大纲
 
    -- telescope
@@ -162,8 +162,8 @@ return packer.startup(function(use)
    use "nvim-telescope/telescope-ui-select.nvim"
    use "nvim-telescope/telescope-live-grep-raw.nvim"
    use "nvim-telescope/telescope-dap.nvim"
-   -- use "BurntSushi/ripgrep" -- 文字查找
-   -- use "sharkdp/fd" -- 文件查找
+   use "BurntSushi/ripgrep" -- 文字查找
+   use "sharkdp/fd" -- 文件查找
 
    ------------- 代码编辑 -------------
 
