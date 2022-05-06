@@ -271,7 +271,25 @@ cmp_config = {
     }),
 
     ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-e>"] = cmp.mapping.abort(),
+    --  出现或关闭补全
+    ["<C-e>"] = cmp.mapping(
+    {
+        i = function()
+            if cmp.visible() then
+                cmp.abort()
+            else
+                cmp.complete()
+            end
+        end,
+        c = function()
+            if cmp.visible() then
+                cmp.close()
+            else
+                cmp.complete()
+            end
+        end
+    }
+    ),
     ["<CR>"] = cmp.mapping(function(fallback)
       if cmp.visible() and cmp.confirm(cmp_config.confirm_opts) then
         if jumpable() then

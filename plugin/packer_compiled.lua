@@ -163,11 +163,6 @@ _G.packer_plugins = {
     path = "/home/nure/.local/share/nvim/site/pack/packer/opt/faster.nvim",
     url = "https://github.com/PHSix/faster.nvim"
   },
-  fd = {
-    loaded = true,
-    path = "/home/nure/.local/share/nvim/site/pack/packer/start/fd",
-    url = "https://github.com/sharkdp/fd"
-  },
   ["fidget.nvim"] = {
     loaded = true,
     path = "/home/nure/.local/share/nvim/site/pack/packer/start/fidget.nvim",
@@ -182,6 +177,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/nure/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
+  },
+  ["github-nvim-theme"] = {
+    loaded = true,
+    path = "/home/nure/.local/share/nvim/site/pack/packer/start/github-nvim-theme",
+    url = "https://github.com/projekt0n/github-nvim-theme"
   },
   ["impatient.nvim"] = {
     loaded = true,
@@ -305,6 +305,11 @@ _G.packer_plugins = {
     path = "/home/nure/.local/share/nvim/site/pack/packer/opt/nvim-scrollbar",
     url = "https://github.com/petertriho/nvim-scrollbar"
   },
+  ["nvim-spectre"] = {
+    loaded = true,
+    path = "/home/nure/.local/share/nvim/site/pack/packer/start/nvim-spectre",
+    url = "https://github.com/nvim-pack/nvim-spectre"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/home/nure/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
@@ -344,11 +349,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/nure/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
-  },
-  ripgrep = {
-    loaded = true,
-    path = "/home/nure/.local/share/nvim/site/pack/packer/start/ripgrep",
-    url = "https://github.com/BurntSushi/ripgrep"
   },
   sniprun = {
     loaded = true,
@@ -402,6 +402,11 @@ _G.packer_plugins = {
     path = "/home/nure/.local/share/nvim/site/pack/packer/start/vim-python-pep8-indent",
     url = "https://github.com/Vimjas/vim-python-pep8-indent"
   },
+  ["vim-repeat"] = {
+    loaded = true,
+    path = "/home/nure/.local/share/nvim/site/pack/packer/start/vim-repeat",
+    url = "https://github.com/tpope/vim-repeat"
+  },
   ["vim-startuptime"] = {
     loaded = true,
     path = "/home/nure/.local/share/nvim/site/pack/packer/start/vim-startuptime",
@@ -435,9 +440,9 @@ vim.cmd [[au FileType xml ++once lua require("packer.load")({'emmet-vim'}, { ft 
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'vimcdoc', 'nvim-scrollbar', 'switch.vim'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'switch.vim', 'nvim-scrollbar', 'vimcdoc'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufNewFile * ++once lua require("packer.load")({'switch.vim', 'nvim-scrollbar', 'vimcdoc'}, { event = "BufNewFile *" }, _G.packer_plugins)]]
 vim.cmd [[au VimEnter * ++once lua require("packer.load")({'faster.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au BufNewFile * ++once lua require("packer.load")({'vimcdoc', 'nvim-scrollbar', 'switch.vim'}, { event = "BufNewFile *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end

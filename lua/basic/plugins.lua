@@ -135,6 +135,10 @@ return packer.startup(function(use)
        "catppuccin/nvim",
        as = "catppuccin"
    }
+   use {
+    "projekt0n/github-nvim-theme",
+    -- tag = "v0.0.4",
+   }
    -- use 'folke/tokyonight.nvim'  -- tokyonight主题
    use "goolord/alpha-nvim"  --欢迎界面
    use "akinsho/bufferline.nvim"  -- 顶部标签栏
@@ -162,8 +166,8 @@ return packer.startup(function(use)
    use "nvim-telescope/telescope-ui-select.nvim"
    use "nvim-telescope/telescope-live-grep-raw.nvim"
    use "nvim-telescope/telescope-dap.nvim"
-   use "BurntSushi/ripgrep" -- 文字查找
-   use "sharkdp/fd" -- 文件查找
+   -- use "BurntSushi/ripgrep" -- 文字查找
+   -- use "sharkdp/fd" -- 文件查找
 
    ------------- 代码编辑 -------------
 
@@ -178,7 +182,6 @@ return packer.startup(function(use)
    use "p00f/nvim-ts-rainbow" -- 彩虹括号
    use "sbdchd/neoformat"  -- 代码格式化
    use "windwp/nvim-autopairs"  -- 自动匹配括号
-   use "ur4ltz/surround.nvim"  -- 修改包裹
    -- 快速更改单词
    use {
        "AndrewRadev/switch.vim",
@@ -228,6 +231,9 @@ return packer.startup(function(use)
    }
    use "ethanholz/nvim-lastplace"  -- 自动恢复最后一次光标位置
    use "folke/lsp-colors.nvim"  -- 为不支持LSP高亮的主题提供默认高亮方案
+   use 'nvim-pack/nvim-spectre'  -- 搜索替换实时预览
+   use 'tpope/vim-repeat'  -- .点模式增强
+   use "ur4ltz/surround.nvim"  -- 修改包裹
    -- use "rmagatti/auto-session"  -- 自动会话管理
 
 
