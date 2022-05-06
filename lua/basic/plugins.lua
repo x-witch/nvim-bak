@@ -149,7 +149,7 @@ return packer.startup(function(use)
    ------------- 常用工具 -------------
 
    -- 目录大纲
-   use "kyazdani42/nvim-tree.lua"  -- 文件树
+   use "kyazdani42/nvim-tree.lua"  --资源管理器
    -- use "liuchengxu/vista.vim"  -- 代码大纲
    use "stevearc/aerial.nvim"  -- 代码大纲
 
