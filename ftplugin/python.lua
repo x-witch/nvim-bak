@@ -15,7 +15,7 @@ func! RunPython()
 	if &filetype=='python'
 	    set splitbelow
 	    :sp
-	    :term python %
+	    :term python3 %
 	    " :sp term://python %
 		" exec "!time python3.9 %"
 	endif
@@ -52,7 +52,7 @@ autocmd BufNewFile *.py,*.tex exec ":call SetTitle()"
 map <F1> :call SetTitle()<CR>
 func! SetTitle() 
     if &filetype == 'python'
-        call setline(1,"#!/usr/bin python")
+        call setline(1,"#!/usr/bin python3")
         call append(line("."),"# -*- coding:UTF-8 -*-")
         call append(line(".")+1, "# File Name: ".expand("%"))
         call append(line(".")+2, "# Author: xssaw 🐬")
