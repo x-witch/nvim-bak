@@ -144,7 +144,7 @@ keymap("n", "<leader>fo", "<cmd>Telescope oldfiles theme=dropdown<CR>", opts)
 -- 打开终端,也可以用Ctrl+\打开或关闭
 keymap("n", "<leader>tt", "<cmd>exe v:count.'ToggleTerm'<CR>", opts)
 -- 打开python终端
-keymap("n", "<leader>tp", "<cmd>lua require('toggleterm').pyterm()<CR>", opts)
+-- keymap("n", "<leader>tp", "<cmd>lua require('toggleterm').pyterm()<CR>", opts)
 
 
 
