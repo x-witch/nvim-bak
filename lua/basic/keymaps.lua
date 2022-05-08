@@ -141,16 +141,10 @@ keymap("n", "<leader>fo", "<cmd>Telescope oldfiles theme=dropdown<CR>", opts)
 
 
 -- ToggleTerm 内置终端
--- 退出终端插入模式
-keymap("t", "<Esc>", "<C-\\><C-n>", opts)
--- 打开普通终端
+-- 打开终端,也可以用Ctrl+\打开或关闭
 keymap("n", "<leader>tt", "<cmd>exe v:count.'ToggleTerm'<CR>", opts)
--- 打开浮动终端
--- keymap("n", "<leader>tf", "<cmd>lua require('toggleterm').float_toggle()<CR>", opts)
--- 打开lazy git 终端
--- keymap("n", "<leader>tg", "<cmd>lua require('toggleterm').lazygit_toggle()<CR>", opts)
--- 打开或关闭所有终端
--- keymap("n", "<leader>ta", "<cmd>ToggleTermToggleAll<CR>", opts)
+-- 打开python终端
+keymap("n", "<leader>tp", "<cmd>lua require('toggleterm').pyterm()<CR>", opts)
 
 
 
