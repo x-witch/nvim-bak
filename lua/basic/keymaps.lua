@@ -45,7 +45,7 @@ keymap('n', 'k', '<Plug>(faster_move_k)', {noremap=false, silent=true})
 -- keymap("n", "<leader>cs", "<cmd>set spell!<CR>", opts)
 
 -- insert模式 --
--- 插入模下 jj 退出插入模式
+-- 插入模式下 jj 退出插入模式
 keymap("i", "jj", "<Esc>", opts)
 
 -- 插入模式下的上下左右移动
@@ -87,7 +87,7 @@ keymap("n", "<leader>bh", "<cmd>BufferLineCloseLeft<CR>", opts)
 keymap("n", "<leader>bl", "<cmd>BufferLineCloseRight<CR>", opts)
 
 -- Neoformat 格式化
-keymap("n", "<leader>cf", "<cmd>Neoformat<CR>", opts)
+keymap("n", "<leader>fl", "<cmd>Neoformat<CR>", opts)
 
 -- nvim-dap-ui 显示或隐藏调试界面
 keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<CR>", opts)
@@ -127,15 +127,15 @@ keymap("n", "gs", ":Switch<cr>", opts)
 
 -- telescope
 -- 查找文件
-keymap("n", "<leader>ff", "<cmd>Telescope find_files theme=dropdown<CR>", opts)
+-- keymap("n", "<leader>ff", "<cmd>Telescope find_files theme=dropdown<CR>", opts)
 -- 查找文字
-keymap("n", "<leader>fg", "<cmd>Telescope live_grep theme=dropdown<CR>", opts)
--- 查找特殊符号
-keymap("n", "<leader>fb", "<cmd>Telescope buffers theme=dropdown<CR>", opts)
+-- keymap("n", "<leader>fg", "<cmd>Telescope live_grep theme=dropdown<CR>", opts)
+-- 已打开buffers中查找
+-- keymap("n", "<leader>fb", "<cmd>Telescope buffers theme=dropdown<CR>", opts)
 -- 查找帮助文档
-keymap("n", "<leader>fh", "<cmd>Telescope help_tags theme=dropdown<CR>", opts)
+-- keymap("n", "<leader>fh", "<cmd>Telescope help_tags theme=dropdown<CR>", opts)
 -- 查找最近打开的文件
-keymap("n", "<leader>fo", "<cmd>Telescope oldfiles theme=dropdown<CR>", opts)
+-- keymap("n", "<leader>fo", "<cmd>Telescope oldfiles theme=dropdown<CR>", opts)
 -- 查找 marks 标记
 -- keymap("n", "<leader>fm", "<cmd>Telescope marks theme=dropdown<CR>", opts)
 

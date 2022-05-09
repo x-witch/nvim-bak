@@ -80,46 +80,17 @@ local opts = {
 }
 
 local mappings = {
-  ["a"] = {
-    "<cmd>AerialToggle<CR>", "Outline"
-  },
-  -- ["r"] = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-  -- ["b"] = {
-  --   "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-  --   "Buffers",
-  -- },
+  ["a"] = { "<cmd>AerialToggle<CR>", "aerial" },
   -- ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   -- ["w"] = { "<cmd>w!<CR>", "Save" },
   -- ["q"] = { "<cmd>q!<CR>", "Quit" },
   -- ["/"] = { "<cmd>lua require('Comment').toggle()<CR>", "Comment" },
   -- ["C"] = { "<cmd>%bd|e#<CR>", "Close Other Buffers" },
   -- ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-  -- ["f"] = {
-  --   "<cmd>lua require('telescope.builtin').find_files()<cr>",
-  --   -- "<cmd>lua require('telescope').extensions.frecenncy.frecency(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
-  --   "Find files",
-  -- },
-  -- ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
-  ["F"] = { "<cmd>lua require('telescope').extensions.live_grep_raw.live_grep_raw(require('telescope.themes').get_ivy())<cr>", "Find Text" },
-  ["s"] = {
-    "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>",
-    "Find Document Symbols",
-  },
-  ["S"] = {
-    "<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<cr>",
-    -- "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>",
-    "Find Symobls",
-  },
   -- ["p"] = { "<cmd>Telescope projects<cr>", "Projects" },
-  --
-  -- ["t"] = {
-  --   "<cmd>UltestSummary<CR>", "Unit Test"
-  -- },
+  -- ["t"] = { "<cmd>UltestSummary<CR>", "Unit Test" },
+  -- ["v"] = { "<cmd>lua require('telescope').extensions.neoclip.default(require('telescope.themes').get_ivy())<cr>", "Clipboard Manager" },
 
-  -- ["v"] = {
-  --   "<cmd>lua require('telescope').extensions.neoclip.default(require('telescope.themes').get_ivy())<cr>",
-  --   "Clipboard Manager"
-  -- },
 
   c = {
     name = "CMake",
@@ -158,15 +129,29 @@ local mappings = {
     -- u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
   },
 
-  T = {
-    name = "Trouble",
-    t = { "<cmd>Trouble<cr>", "ToggleTrouble" },
-    d = { "<cmd>Trouble document_diagnostics<cr>", "Document Diagnostics"},
-    w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics"},
-    q = { "<cmd>Trouble quickfix<cr>", "Quick Fix"},
-    u = { "<cmd>Trouble lsp_references<cr>", "Usage"},
-    g = { "<cmd>Gitsigns setloclist<cr>", "Open changed hunk" },
+  f = {
+    name = 'Find',
+    f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "Find Files" },
+    -- "<cmd>lua require('telescope').extensions.frecenncy.frecency(require('telescope.themes').get_dropdown({ previewer = false }))<cr>",
+    o = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+    b = { "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>", "Buffers" },
+    g = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
+    -- ["fg"] = { "<cmd>lua require('telescope').extensions.live_grep_raw.live_grep_raw(require('telescope.themes').get_ivy())<cr>", "Find Text" },
+    s = { "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", "Find Document Symbols", },
+    S = { "<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<cr>", "Find Symobls", },
+    -- "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>",
   },
+
+
+  -- T = {
+  --   name = "Trouble",
+  --   t = { "<cmd>Trouble<cr>", "ToggleTrouble" },
+  --   d = { "<cmd>Trouble document_diagnostics<cr>", "Document Diagnostics"},
+  --   w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics"},
+  --   q = { "<cmd>Trouble quickfix<cr>", "Quick Fix"},
+  --   u = { "<cmd>Trouble lsp_references<cr>", "Usage"},
+  --   g = { "<cmd>Gitsigns setloclist<cr>", "Open changed hunk" },
+  -- },
 
   P = {
     name = "Packer",
@@ -191,28 +176,28 @@ local mappings = {
   --   c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
   -- },
 
-  g = {
-     name = "Git",
-     g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
-     f = { "<cmd>DiffviewFileHistory<CR>", "File History" },
-     p = { "<cmd>DiffviewOpen<CR>", "Diff Project" },
-     n = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-     N = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-     l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
-     r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-     R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-     s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-     S = { "<cmd>lua require 'gitsigns'.stage_buffer()<cr>", "Stage Hunk" },
-     u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk", },
-     U = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk", },
-     o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-     c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-     d = {
-       "<cmd>Gitsigns diffthis HEAD<cr>",
-       "Diff",
-     },
-   },
+  -- g = {
+  --    name = "Git",
+  --    g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
+  --    f = { "<cmd>DiffviewFileHistory<CR>", "File History" },
+  --    p = { "<cmd>DiffviewOpen<CR>", "Diff Project" },
+  --    n = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
+  --    N = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
+  --    l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
+  --    r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
+  --    R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
+  --    s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
+  --    S = { "<cmd>lua require 'gitsigns'.stage_buffer()<cr>", "Stage Hunk" },
+  --    u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk", },
+  --    U = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk", },
+  --    o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+  --    b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+  --    c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+  --    d = {
+  --      "<cmd>Gitsigns diffthis HEAD<cr>",
+  --      "Diff",
+  --    },
+  --  },
 
   R = {
     name = "Replace",
@@ -275,7 +260,6 @@ local mappings = {
     c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-    -- r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     R = { "<cmd>Telescope registers<cr>", "Registers" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     C = { "<cmd>Telescope commands<cr>", "Commands" },

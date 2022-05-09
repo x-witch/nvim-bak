@@ -21,15 +21,16 @@ M.setup = function()
     "filetype",
     "tokyonight",
     "null-ls",
+    "vim-translator"
   }
 
-  helper_set = {}
+  local helper_set = {}
   for _, v in pairs(unload_plugins) do
     helper_set[v] = true
   end
   for _, fname in pairs(vim.fn.readdir(config_dir)) do
     if ends_with(fname, ".lua") then
-      cut_suffix_fname = fname:sub(1, #fname - #'.lua')
+      local cut_suffix_fname = fname:sub(1, #fname - #'.lua')
       if helper_set[cut_suffix_fname] == nil then
         local file = "conf." .. cut_suffix_fname
         local status_ok, _ = pcall(require, file)
