@@ -12,7 +12,6 @@ local platform_python = {
     WINDOWS = "C:\\Python\\python.exe"
 }
 
-
 -- 获取平台 undotree 路径
 local platform_undotree = {
     MAC = "~/.config/nvim/undodir",
@@ -71,7 +70,6 @@ vim.g.FcitxToggleInput = function()
     end
 end
 vim.cmd("autocmd InsertLeave * call FcitxToggleInput()")
-
 
 -- 设置跳出自动补全的括号
 -- vim.cmd(

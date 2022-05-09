@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 
-local opts = { noremap = true, silent = true }
-local term_opts = { silent = true }
+local opts = {noremap = true, silent = true}
+local term_opts = {silent = true}
 local keymap = vim.api.nvim_set_keymap
 
 --Remap space as leader key
@@ -38,8 +38,8 @@ keymap("n", "<C-right>", "<cmd>vertical resize+1<CR>", opts)
 keymap("n", "Q", ":q<CR>", opts)
 
 -- 加速j和k
-keymap('n', 'j', '<Plug>(faster_move_j)', {noremap=false, silent=true})
-keymap('n', 'k', '<Plug>(faster_move_k)', {noremap=false, silent=true})
+keymap("n", "j", "<Plug>(faster_move_j)", {noremap = false, silent = true})
+keymap("n", "k", "<Plug>(faster_move_k)", {noremap = false, silent = true})
 
 -- 通过 leader cs 切换拼写检查
 -- keymap("n", "<leader>cs", "<cmd>set spell!<CR>", opts)
@@ -54,8 +54,7 @@ keymap("i", "<A-j>", "<down>", opts)
 keymap("i", "<A-h>", "<left>", opts)
 keymap("i", "<A-l>", "<right>", opts)
 
-
-   ------------- 插件快捷键 -------------
+------------- 插件快捷键 -------------
 
 -- nvim-tree 文件目录
 --  <leader>1 打开文件树
@@ -65,7 +64,6 @@ keymap("n", "<leader>fc", "<cmd>NvimTreeFindFile<CR>", opts)
 
 -- aerial 代码大纲
 -- 打开、关闭大纲预览 <leader>a
-
 
 -- copilot
 keymap("i", "<C-l>", "copilot#Accept('')", {silent = true, expr = true})
@@ -113,7 +111,7 @@ keymap(
 )
 
 -- nvim-notify 显示历史弹窗记录（需安装 telescope 插件）
-keymap("n","<leader>fn","<cmd>lua require('telescope').extensions.notify.notify()<CR>",opts)
+keymap("n", "<leader>fn", "<cmd>lua require('telescope').extensions.notify.notify()<CR>", opts)
 
 -- sniprun
 keymap("n", "<leader>rf", ":%SnipRun<cr>", opts)
@@ -139,19 +137,8 @@ keymap("n", "gs", ":Switch<cr>", opts)
 -- 查找 marks 标记
 -- keymap("n", "<leader>fm", "<cmd>Telescope marks theme=dropdown<CR>", opts)
 
-
 -- ToggleTerm 内置终端
 -- 打开终端,也可以用Ctrl+\打开或关闭
 keymap("n", "<leader>tt", "<cmd>exe v:count.'ToggleTerm'<CR>", opts)
 -- 打开python终端
 -- keymap("n", "<leader>tp", "<cmd>lua require('toggleterm').pyterm()<CR>", opts)
-
-
-
-
-
-
-
-
-
-

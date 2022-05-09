@@ -60,7 +60,7 @@ local options = {
     -- 指定代码折叠的最高层级为 100
     foldlevel = 99,
     -- vertical diff split view
-    diffopt="vertical,filler,internal,context:4",
+    diffopt = "vertical,filler,internal,context:4",
 }
 
 vim.opt.shortmess:append "c"
