@@ -1,7 +1,7 @@
 -- https://github.com/neovim/nvim-lspconfig
 -- 更多样式定制，参见：https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization
 -- 1. 安装 nvim-lspconfig
--- 2. 安装对应 language server
+-- 2. 安装对应 language server(需要nvim-lsp-installer自动安装)
 -- 3. 配置对应语言 require('lspconfig').xx.setup{…}
 -- 4. :lua print(vim.inspect(vim.lsp.buf_get_clients())) 查看 LSP 连接状态
 
