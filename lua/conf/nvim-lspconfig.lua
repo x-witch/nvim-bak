@@ -5,51 +5,31 @@
 -- 3. 配置对应语言 require('lspconfig').xx.setup{…}
 -- 4. :lua print(vim.inspect(vim.lsp.buf_get_clients())) 查看 LSP 连接状态
 
-local M = {}
+local nvim_lsp = require("lspconfig")
 
--- TODO: backfill this to template
-M.setup = function()
-  local signs = {
-    { name = "DiagnosticSignError", text = "" },
-    { name = "DiagnosticSignWarn", text = "" },
-    { name = "DiagnosticSignHint", text = "" },
-    { name = "DiagnosticSignInfo", text = "" },
-  }
-
-  for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-  end
-
-  -- 诊断样式定制
-  local config = {
-    -- disable virtual text
-    virtual_text = false,
-    -- show signs
-    signs = {
-      active = signs,
-    },
-    -- 在插入模式下是否显示诊断？
-    update_in_insert = true,
-    underline = true,
-    severity_sort = true,
-    float = {
-      focusable = false,
-      style = "minimal",
-      border = "rounded",
-      source = "always",
-      header = "",
-      prefix = "● ",
-    },
-  }
-
-  vim.diagnostic.config(config)
-
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
-  }) vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = "rounded",
-  })
+local on_attach = function(client, bufnr)
+  lsp_keymaps(bufnr)
+  lsp_highlight_document(client)
+  -- add outline support for evey lanuage
+  require("aerial").on_attach(client, bufnr)
+  require "lsp_signature".on_attach()
 end
+
+-- 使用 cmp_nvim_lsp 代替内置 omnifunc，获得更强的补全体验
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not status_ok then
+  return
+end
+capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
+})
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = "rounded",
+})
 
 local function lsp_highlight_document(client)
   -- Set autocommands conditional on server_capabilities
@@ -61,7 +41,7 @@ local function lsp_highlight_document(client)
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
-    ]],
+    ]] ,
       false
     )
   end
@@ -85,24 +65,12 @@ local function lsp_keymaps(bufnr)
   vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
 end
 
-M.on_attach = function(client, bufnr)
-  -- if client.name == "tsserver" or client.name == "clangd" then
-    -- client.resolved_capabilities.document_formatting = false
-  -- end
-  lsp_keymaps(bufnr)
-  lsp_highlight_document(client)
+-- -------------------------- lsp server ----------------------
+local servers = { "pyright", "sumneko_lua" }
 
-  -- add outline support for evey lanuage
-  require("aerial").on_attach(client, bufnr)
-  require "lsp_signature".on_attach()
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
 end
-
--- 使用 cmp_nvim_lsp 代替内置 omnifunc，获得更强的补全体验
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_ok then
-  return
-end
-M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
-
-return M
