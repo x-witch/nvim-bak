@@ -2,19 +2,31 @@
 -- lsp UI相关设置
 
 -- 自定义图标
-vim.diagnostic.config({
-  virtual_text = true,
-  signs = true,
-  update_in_insert = false,
-})
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  update_in_insert = true,
+  underline = true,
+  severity_sort = true,
+  float = {
+    focusable = false,
+    style = "minimal",
+    border = "rounded",
+    source = "always",
+    header = "",
+    prefix = "",
+  },
+})
+
+
 -- lspkind
-local lspkind = require("lspkind")
+local lspkind = require("lspkind-nvim")
 lspkind.init({
   -- default: true
   -- with_text = true,
@@ -61,7 +73,8 @@ lspkind.init({
 })
 
 local lspsaga = require("lspsaga")
-lspsaga.setup({ -- defaults ...
+lspsaga.setup({
+  -- defaults ...
   debug = false,
   use_saga_diagnostic_sign = true,
   -- diagnostic sign
@@ -115,22 +128,22 @@ lspsaga.setup({ -- defaults ...
   highlight_prefix = false,
 })
 
-local M = {}
--- 为 cmp.lua 提供参数格式
-M.formatting = {
-  format = lspkind.cmp_format({
-    mode = "symbol_text",
-    --mode = 'symbol', -- show only symbol annotations
-
-    maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-    -- The function below will be called before any actual modifications from lspkind
-    -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
-    before = function(entry, vim_item)
-      -- Source 显示提示来源
-      vim_item.menu = "[" .. string.upper(entry.source.name) .. "]"
-      return vim_item
-    end,
-  }),
-}
-
-return M
+-- local M = {}
+-- -- 为 cmp.lua 提供参数格式
+-- M.formatting = {
+--   format = lspkind.cmp_format({
+--     mode = "symbol_text",
+--     --mode = 'symbol', -- show only symbol annotations
+--
+--     maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+--     -- The function below will be called before any actual modifications from lspkind
+--     -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+--     before = function(entry, vim_item)
+--       -- Source 显示提示来源
+--       vim_item.menu = "[" .. string.upper(entry.source.name) .. "]"
+--       return vim_item
+--     end,
+--   }),
+-- }
+--
+-- return M
