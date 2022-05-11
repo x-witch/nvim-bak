@@ -1,5 +1,10 @@
 -- https://github.com/neovim/nvim-lspconfig
 -- 更多样式定制，参见：https://github.com/neovim/nvim-lspconfig/wiki/UI-Customization
+-- 1. 安装 nvim-lspconfig
+-- 2. 安装对应 language server
+-- 3. 配置对应语言 require('lspconfig').xx.setup{…}
+-- 4. :lua print(vim.inspect(vim.lsp.buf_get_clients())) 查看 LSP 连接状态
+
 local M = {}
 
 -- TODO: backfill this to template
@@ -91,12 +96,13 @@ M.on_attach = function(client, bufnr)
   require("aerial").on_attach(client, bufnr)
   require "lsp_signature".on_attach()
 end
+
 -- 使用 cmp_nvim_lsp 代替内置 omnifunc，获得更强的补全体验
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then
   return
 end
 M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+
 return M

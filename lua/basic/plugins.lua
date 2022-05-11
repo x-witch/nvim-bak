@@ -166,6 +166,11 @@ return packer.startup(
         use "nvim-telescope/telescope-ui-select.nvim"
         use "nvim-telescope/telescope-live-grep-raw.nvim"
         use "nvim-telescope/telescope-dap.nvim"
+        -- use { "tami5/sql.nvim", rocks = { "sqlite", "luv" } }
+        -- use { "nvim-telescope/telescope-smart-history.nvim" }
+        -- use "nvim-telescope/telescope-frecency.nvim"
+        -- use { "nvim-telescope/telescope-hop.nvim" }
+        -- use { "nvim-telescope/telescope-file-browser.nvim" }
         -- use "BurntSushi/ripgrep" -- 文字查找
         -- use "sharkdp/fd" -- 文件查找
 
