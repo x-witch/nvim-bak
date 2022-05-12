@@ -75,23 +75,44 @@ lsp_installer.on_server_ready(function(server)
   -- -- { key: 服务器名， value: 配置文件 }
   -- -- key 必须为下列网址列出的 server name，不可以随便写
   -- -- https://github.com/williamboman/nvim-lsp-installer#available-lsps
-  local servers = {
-    -- 语言服务器名称：配置文件
-    sumneko_lua = require("lsp.sumneko_lua"),
-    pyright = require("lsp.pyright"),
-    -- tsserver = require("lsp.tsserver"),
-    -- html = require("lsp.html"),
-    -- cssls = require("lsp.cssls"),
-    -- gopls = require("lsp.gopls"),
-    -- jsonls = require("lsp.jsonls"),
-    -- zeta_note = require("lsp.zeta_note"),
-    -- sqls = require("lsp.sqls"),
-    -- vuels = require("lsp.vuels")
-  }
-  for _, server_options in pairs(servers) do
-    -- require('lspconfig')[lsp].setup {}
-    opts = vim.tbl_deep_extend("force", server_options, opts)
+  -- local servers = {
+  --   -- 语言服务器名称：配置文件
+  --   sumneko_lua = require("lsp.sumneko_lua"),
+  --   pyright = require("lsp.pyright"),
+  --   -- tsserver = require("lsp.tsserver"),
+  --   -- html = require("lsp.html"),
+  --   -- cssls = require("lsp.cssls"),
+  --   -- gopls = require("lsp.gopls"),
+  --   -- jsonls = require("lsp.jsonls"),
+  --   -- zeta_note = require("lsp.zeta_note"),
+  --   -- sqls = require("lsp.sqls"),
+  --   -- vuels = require("lsp.vuels")
+  -- }
+  -- for _, server_options in pairs(servers) do
+  --   -- require('lspconfig')[lsp].setup {}
+  --   opts = vim.tbl_deep_extend("force", server_options, opts)
+  -- end
+
+  if server.name == "clangd" then
+    local clangd_opts = require("lsp.clangd")
+    opts = vim.tbl_deep_extend("force", clangd_opts, opts)
   end
+
+  if server.name == "jsonls" then
+    local jsonls_opts = require("lsp.jsonls")
+    opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
+  end
+
+  if server.name == "sumneko_lua" then
+    local sumneko_opts = require("lsp.sumneko_lua")
+    opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
+  end
+
+  if server.name == "pyright" then
+    local pyright_opts = require("lsp.pyright")
+    opts = vim.tbl_deep_extend("force", pyright_opts, opts)
+  end
+
 
   -- This setup() function is exactly the same as lspconfig's setup function.
   -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
