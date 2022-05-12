@@ -63,44 +63,37 @@ if not status_ok then
   return
 end
 
-lsp_installer.setup({
-    ensure_installed = { "pyright", "sumneko_lua" }, -- ensure these servers are always installed
-    automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
-    ui = {
-        icons = {
-            server_installed = "✓",
-            server_pending = "➜",
-            server_uninstalled = "✗"
-        }
+lsp_installer.on_server_ready(function(server)
+  local opts = {
+    on_attach = require("conf.nvim-lspconfig").on_attach,
+    capabilities = require("conf.nvim-lspconfig").capabilities,
+    flags = {
+      debounce_text_changes = 150,
     }
-})
+  }
 
-local lspconfig = require("nvim-lspconfig")
-
--- 安装列表
--- { key: 服务器名， value: 配置文件 }
--- key 必须为下列网址列出的 server name，不可以随便写
--- https://github.com/williamboman/nvim-lsp-installer#available-lsps
-local servers = {
-  sumneko_lua = require("lsp.sumneko_lua"),
-  -- bashls = require("lsp.config.bash"),
-  pyright = require("lsp.pyright"),
-  -- html = require("lsp.config.html"),
-  -- cssls = require("lsp.config.css"),
-  -- emmet_ls = require("lsp.config.emmet"),
-  -- jsonls = require("lsp.config.json"),
-  -- tsserver = require("lsp.config.ts"),
-  -- rust_analyzer = require("lsp.config.rust"),
-  -- yamlls = require("lsp.config.yamlls"),
-  -- remark_ls = require("lsp.config.markdown"),
-}
-
-for name, config in pairs(servers) do
-  if config ~= nil and type(config) == "table" then
-    -- 自定义初始化配置文件必须实现on_setup 方法
-    config.on_setup(lspconfig[name])
-  else
-    -- 使用默认参数
-    lspconfig[name].setup({})
+  -- -- { key: 服务器名， value: 配置文件 }
+  -- -- key 必须为下列网址列出的 server name，不可以随便写
+  -- -- https://github.com/williamboman/nvim-lsp-installer#available-lsps
+  local servers = {
+    -- 语言服务器名称：配置文件
+    sumneko_lua = require("lsp.sumneko_lua"),
+    pyright = require("lsp.pyright"),
+    -- tsserver = require("lsp.tsserver"),
+    -- html = require("lsp.html"),
+    -- cssls = require("lsp.cssls"),
+    -- gopls = require("lsp.gopls"),
+    -- jsonls = require("lsp.jsonls"),
+    -- zeta_note = require("lsp.zeta_note"),
+    -- sqls = require("lsp.sqls"),
+    -- vuels = require("lsp.vuels")
+  }
+  for _, lsp in pairs(servers) do
+    -- require('lspconfig')[lsp].setup {}
+    opts = vim.tbl_deep_extend("force", lsp, opts)
   end
-end
+
+  -- This setup() function is exactly the same as lspconfig's setup function.
+  -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+  server:setup(opts)
+end)
