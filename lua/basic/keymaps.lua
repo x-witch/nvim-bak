@@ -1,7 +1,8 @@
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-local opts = {noremap = true, silent = true}
-local term_opts = {silent = true}
+local opts = { noremap = true, silent = true }
+local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 --Remap space as leader key
@@ -38,8 +39,8 @@ keymap("n", "<C-right>", "<cmd>vertical resize+1<CR>", opts)
 keymap("n", "Q", ":q<CR>", opts)
 
 -- 加速j和k
-keymap("n", "j", "<Plug>(faster_move_j)", {noremap = false, silent = true})
-keymap("n", "k", "<Plug>(faster_move_k)", {noremap = false, silent = true})
+keymap("n", "j", "<Plug>(faster_move_j)", { noremap = false, silent = true })
+keymap("n", "k", "<Plug>(faster_move_k)", { noremap = false, silent = true })
 
 -- 通过 leader cs 切换拼写检查
 -- keymap("n", "<leader>cs", "<cmd>set spell!<CR>", opts)
@@ -66,7 +67,7 @@ keymap("n", "<leader>fc", "<cmd>NvimTreeFindFile<CR>", opts)
 -- 打开、关闭大纲预览 <leader>a
 
 -- copilot
-keymap("i", "<C-l>", "copilot#Accept('')", {silent = true, expr = true})
+keymap("i", "<C-l>", "copilot#Accept('')", { silent = true, expr = true })
 -- 使用 C-l 确认补全
 -- 使用 M-[ 查看上一个补全
 -- 使用 M-[ 查看下一个补全
@@ -104,10 +105,10 @@ keymap("n", "<F8>", "<cmd>lua require'dap'.step_out()<CR>", opts)
 keymap("n", "<F9>", "<cmd>lua require'dap'.run_last()<CR>", opts)
 -- 退出调试（关闭调试，关闭 repl，关闭 ui，清除内联文本）
 keymap(
-    "n",
-    "<F10>",
-    "<cmd>lua require'dap'.close()<CR><cmd>lua require'dap.repl'.close()<CR><cmd>lua require'dapui'.close()<CR><cmd>DapVirtualTextForceRefresh<CR>",
-    opts
+  "n",
+  "<F10>",
+  "<cmd>lua require'dap'.close()<CR><cmd>lua require'dap.repl'.close()<CR><cmd>lua require'dapui'.close()<CR><cmd>DapVirtualTextForceRefresh<CR>",
+  opts
 )
 
 -- nvim-notify 显示历史弹窗记录（需安装 telescope 插件）
