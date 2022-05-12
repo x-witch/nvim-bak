@@ -88,12 +88,13 @@ lsp_installer.on_server_ready(function(server)
     -- sqls = require("lsp.sqls"),
     -- vuels = require("lsp.vuels")
   }
-  for _, lsp in pairs(servers) do
+  for _, server_options in pairs(servers) do
     -- require('lspconfig')[lsp].setup {}
-    opts = vim.tbl_deep_extend("force", lsp, opts)
+    opts = vim.tbl_deep_extend("force", server_options, opts)
   end
 
   -- This setup() function is exactly the same as lspconfig's setup function.
   -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+  -- 启动服务
   server:setup(opts)
 end)
