@@ -44,6 +44,7 @@ require("nvim-lsp-installer").setup {
   -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed
   automatic_installation = false,
 }
+
 local lspconfig = require("lspconfig")
 
 local handlers = {
