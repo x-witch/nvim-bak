@@ -4,6 +4,23 @@ local myAutoGroup = vim.api.nvim_create_augroup("myAutoGroup", {
 
 local autocmd = vim.api.nvim_create_autocmd
 
+autocmd("BufEnter", {
+  pattern = { "*" },
+  callback = (function()
+    local cursor_hidden_ft = {
+      "NvimTree",
+      "aerial",
+    }
+    return function()
+      if vim.tbl_contains(cursor_hidden_ft, vim.bo.filetype) then
+        vim.o.guicursor = "n-v:hor1-Cursorline,"
+      else
+        vim.o.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
+      end
+    end
+  end)(),
+})
+
 -- nvim-tree 自动关闭
 -- autocmd("BufEnter", {
 --   nested = true,
