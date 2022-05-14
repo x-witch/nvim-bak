@@ -1,6 +1,5 @@
 require('lsp.svr-settings.pyright')
 require('lsp.svr-settings.sumneko_lua')
-require('lsp.svr-settings.clangd')
 require('lsp.svr-settings.jsonls')
 require('lsp.setup')
 require('lsp.lspsaga')
