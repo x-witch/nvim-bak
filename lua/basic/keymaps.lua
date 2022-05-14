@@ -2,7 +2,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 local opts = { noremap = true, silent = true }
-local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 --Remap space as leader key
@@ -66,6 +65,10 @@ keymap("n", "<leader>fc", "<cmd>NvimTreeFindFile<CR>", opts)
 -- aerial 代码大纲
 -- 打开、关闭大纲预览 <leader>a
 
+-- undotree
+keymap("n", "<leader>2", "<cmd>UndotreeToggle<CR>", opts)
+
+
 -- copilot
 keymap("i", "<C-l>", "copilot#Accept('')", { silent = true, expr = true })
 -- 使用 C-l 确认补全
@@ -124,22 +127,27 @@ keymap("v", "<leader>rs", ":%SnipRun<cr>", opts)
 -- switch
 keymap("n", "gs", ":Switch<cr>", opts)
 
--- telescope
--- 查找文件
--- keymap("n", "<leader>ff", "<cmd>Telescope find_files theme=dropdown<CR>", opts)
--- 查找文字
--- keymap("n", "<leader>fg", "<cmd>Telescope live_grep theme=dropdown<CR>", opts)
--- 已打开buffers中查找
--- keymap("n", "<leader>fb", "<cmd>Telescope buffers theme=dropdown<CR>", opts)
--- 查找帮助文档
--- keymap("n", "<leader>fh", "<cmd>Telescope help_tags theme=dropdown<CR>", opts)
--- 查找最近打开的文件
--- keymap("n", "<leader>fo", "<cmd>Telescope oldfiles theme=dropdown<CR>", opts)
--- 查找 marks 标记
--- keymap("n", "<leader>fm", "<cmd>Telescope marks theme=dropdown<CR>", opts)
 
 -- ToggleTerm 内置终端
 -- 打开终端,也可以用Ctrl+\打开或关闭
 keymap("n", "<leader>tt", "<cmd>exe v:count.'ToggleTerm'<CR>", opts)
 -- 打开python终端
 -- keymap("n", "<leader>tp", "<cmd>lua require('toggleterm').pyterm()<CR>", opts)
+
+--lsp
+-- keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+-- keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+keymap("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+keymap("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+keymap("n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+keymap("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+-- keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+keymap("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)

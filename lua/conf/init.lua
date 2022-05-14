@@ -19,7 +19,6 @@ M.setup = function()
     "nvim-markdown-previewrkdown-prview",
     "vista",
     "filetype",
-    "tokyonight",
     "null-ls",
     "vim-translator"
   }

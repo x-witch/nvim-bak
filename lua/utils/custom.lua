@@ -1,36 +1,36 @@
 -- 获取平台图标
 local platform_icons = {
-    MAC = " ",
-    UNIX = " ",
-    WINDOWS = " "
+  MAC = " ",
+  UNIX = " ",
+  WINDOWS = " "
 }
 
 -- 获取平台 Python 解释器路径
 local platform_python = {
-    MAC = "/usr/local/bin/python3",
-    UNIX = "/usr/bin/python3",
-    WINDOWS = "C:\\Python\\python.exe"
+  MAC = "/usr/local/bin/python3",
+  UNIX = "/usr/bin/python3",
+  WINDOWS = "C:\\Python\\python.exe"
 }
 
 -- 获取平台 undotree 路径
 local platform_undotree = {
-    MAC = "~/.config/nvim/undodir",
-    UNIX = "~/.config/nvim/undodir",
-    WINDOWS = "C:\\Users\\%USERNAME%\\AppData\\Local\\nvim\\undodir"
+  MAC = "~/.config/nvim/undodir",
+  UNIX = "~/.config/nvim/undodir",
+  WINDOWS = "C:\\Users\\%USERNAME%\\AppData\\Local\\nvim\\undodir"
 }
 
 -- 获取平台 代码片段存储路径
 local platform_snippet = {
-    MAC = "~/.config/nvim/snippets",
-    UNIX = "~/.config/nvim/snippets",
-    WINDOWS = "C:\\Users\\%USERNAME%\\AppData\\Local\\nvim\\snippets"
+  MAC = "~/.config/nvim/snippets",
+  UNIX = "~/.config/nvim/snippets",
+  WINDOWS = "C:\\Users\\%USERNAME%\\AppData\\Local\\nvim\\snippets"
 }
 
 -- 获取平台 lint 配置文件路径
 local platform_lint = {
-    MAC = "~/.config/nvim/lint",
-    UNIX = "~/.config/nvim/lint",
-    WINDOWS = "C:\\Users\\%USERNAME%\\AppData\\Local\\nvim\\lint"
+  MAC = "~/.config/nvim/lint",
+  UNIX = "~/.config/nvim/lint",
+  WINDOWS = "C:\\Users\\%USERNAME%\\AppData\\Local\\nvim\\lint"
 }
 
 -- 数据库链接地址
@@ -54,7 +54,7 @@ vim.g.python_path = platform_python[vim.g.platform_info]
 -- 指定代码片段存储路径
 vim.g.vsnip_snippet_dir = platform_snippet[vim.g.platform_info]
 -- 指定 undotree 缓存存放路径
-vim.g.undotree_dir = platform_undotree[vim.g.platform_info]
+vim.g.undotree_dir = "~/.cache/nvim/undodir"
 -- 指定 lint 配置文件路径
 vim.g.lint_config_path = platform_lint[vim.g.platform_info]
 -- 指定 translate 代理服务器
