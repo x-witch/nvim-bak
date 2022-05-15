@@ -20,7 +20,8 @@ M.setup = function()
     "vista",
     "filetype",
     "null-ls",
-    "vim-translator"
+    "vim-translator",
+    "snippets",
   }
 
   local helper_set = {}

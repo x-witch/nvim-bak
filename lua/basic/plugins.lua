@@ -105,10 +105,10 @@ return packer.startup(
       { "saadparwaiz1/cmp_luasnip" }, -- Snippets source for nvim-cmp
       { "hrsh7th/cmp-nvim-lsp" }, -- 替换内置 omnifunc，获得更多补全
       { "onsails/lspkind-nvim" }, -- 为补全添加类似 vscode 的图标
-      { "hrsh7th/cmp-vsnip" } -- 适用于 vsnip 的代码片段源
-      -- { "hrsh7th/vim-vsnip" }, -- vsnip 引擎，用于获得代码片段支持
+      { "hrsh7th/cmp-vsnip" }, -- 适用于 vsnip 的代码片段源
+      { "hrsh7th/cmp-nvim-lua" },
+      { "hrsh7th/vim-vsnip" }, -- vsnip 引擎，用于获得代码片段支持
       -- {"f3fora/cmp-spell"}, -- 拼写建议
-      -- {"rafamadriz/friendly-snippets"}, -- 提供多种语言的代码片段
       -- { "lukas-reineke/cmp-under-comparator" }, -- 让补全结果的排序更加智能
     }
   }
@@ -120,7 +120,7 @@ return packer.startup(
   }
   -- 代码片段
   use "L3MON4D3/LuaSnip"
-  use "rafamadriz/friendly-snippets"
+  use "rafamadriz/friendly-snippets" -- 提供多种语言的代码片段
 
   ------------- DAP -------------
   use "mfussenegger/nvim-dap" -- 代码调试基础插件

@@ -135,8 +135,8 @@ end
 
 require("luasnip.loaders.from_vscode").lazy_load() -- load freindly-snippets
 require("luasnip.loaders.from_vscode").load({ paths = { -- load custom snippets
-  vim.fn.stdpath("config") .. "/my-snippets"
-} }) -- Load snippets from my-snippets folder
+  vim.fn.stdpath("config") .. "/snippets"
+} }) -- Load snippets from user custom snippets folder
 
 cmp_config = {
   confirm_opts = {
@@ -183,6 +183,7 @@ cmp_config = {
     },
     source_names = {
       nvim_lsp = "(LSP)",
+      treesitter = "(TS)",
       emoji = "(Emoji)",
       path = "(Path)",
       calc = "(Calc)",
@@ -213,7 +214,10 @@ cmp_config = {
   },
   snippet = {
     expand = function(args)
-      require("luasnip").lsp_expand(args.body)
+      -- 使用 vsnip 引擎
+      vim.fn["vsnip#anonymous"](args.body)
+      -- 使用 luasnip 引擎
+      -- require("luasnip").lsp_expand(args.body)
     end,
   },
   window = {
@@ -221,6 +225,7 @@ cmp_config = {
     documentation = cmp.config.window.bordered(),
   },
   sources = {
+    { name = "vsnip" },
     { name = "nvim_lsp" },
     { name = "path" },
     { name = "luasnip" },
@@ -244,7 +249,7 @@ cmp_config = {
         cmp.select_next_item()
       elseif luasnip.expandable() then
         luasnip.expand()
-      elseif jumpable() then
+      elseif jumpable(1) then
         luasnip.jump(1)
       elseif check_backspace() then
         fallback()
@@ -270,35 +275,17 @@ cmp_config = {
       "s",
     }),
 
-    ["<C-Space>"] = cmp.mapping.complete(),
-    --  出现或关闭补全
-    ["<C-e>"] = cmp.mapping(
-    {
-        i = function()
-            if cmp.visible() then
-                cmp.abort()
-            else
-                cmp.complete()
-            end
-        end,
-        c = function()
-            if cmp.visible() then
-                cmp.close()
-            else
-                cmp.complete()
-            end
-        end
-    }
-    ),
+    ["<C-p>"] = cmp.mapping.complete(),
+    ["<C-e>"] = cmp.mapping.abort(),
     ["<CR>"] = cmp.mapping(function(fallback)
       if cmp.visible() and cmp.confirm(cmp_config.confirm_opts) then
-        if jumpable() then
+        if jumpable(1) then
           luasnip.jump(1)
         end
         return
       end
 
-      if jumpable() then
+      if jumpable(1) then
         if not luasnip.jump(1) then
           fallback()
         end
@@ -316,6 +303,13 @@ cmp.setup.cmdline('/', {
   }
 })
 
+cmp.setup.cmdline('?', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
@@ -326,42 +320,42 @@ cmp.setup.cmdline(':', {
   })
 })
 
-
 -- disable autocompletion for guihua
 vim.cmd("autocmd FileType guihua lua require('cmp').setup.buffer { enabled = false }")
 vim.cmd("autocmd FileType guihua_rust lua require('cmp').setup.buffer { enabled = false }")
 
 cmp.setup(cmp_config)
 
---如果出现方法名补全没有括号可以重写插件方法,实现方法名后自动追加()
+
+
+-- 如果出现方法名补全没有括号可以重写插件方法,实现方法名后自动追加()
 -- local keymap = require("cmp.utils.keymap")
 -- cmp.confirm = function(option)
---     option = option or {}
---     local e = cmp.core.view:get_selected_entry() or (option.select and cmp.core.view:get_first_entry() or nil)
---     if e then
---         cmp.core:confirm(
---         e,
---         {
---             behavior = option.behavior
---         },
---         function()
---             local myContext = cmp.core:get_context({reason = cmp.ContextReason.TriggerOnly})
---             cmp.core:complete(myContext)
---             --function() 自动增加()
---                 if
---                     e and e.resolved_completion_item and
---                     (e.resolved_completion_item.kind == 3 or e.resolved_completion_item.kind == 2)
---                     then
---                         vim.api.nvim_feedkeys(keymap.t("()<Left>"), "n", true)
---                     end
---                 end
---                 )
---                 return true
---             else
---                 if vim.fn.complete_info({"selected"}).selected ~= -1 then
---                     keymap.feedkeys(keymap.t("<C-y>"), "n")
---                     return true
---                 end
---                 return false
---             end
---         end
+--   option = option or {}
+--   local e = cmp.core.view:get_selected_entry() or (option.select and cmp.core.view:get_first_entry() or nil)
+--   if e then
+--     cmp.core:confirm(
+--       e,
+--       {
+--         behavior = option.behavior
+--       },
+--       function()
+--       local myContext = cmp.core:get_context({ reason = cmp.ContextReason.TriggerOnly })
+--       cmp.core:complete(myContext)
+--       --function() 自动增加()
+--       if e and e.resolved_completion_item and
+--           (e.resolved_completion_item.kind == 3 or e.resolved_completion_item.kind == 2)
+--       then
+--         vim.api.nvim_feedkeys(keymap.t("()<Left>"), "n", true)
+--       end
+--     end
+--     )
+--     return true
+--   else
+--     if vim.fn.complete_info({ "selected" }).selected ~= -1 then
+--       keymap.feedkeys(keymap.t("<C-y>"), "n")
+--       return true
+--     end
+--     return false
+--   end
+-- end
