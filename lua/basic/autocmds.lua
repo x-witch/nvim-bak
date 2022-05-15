@@ -85,3 +85,26 @@ autocmd("TextYankPost", {
   end,
   pattern = "*",
 })
+
+-- 修改lua/basic/plugins.lua 自动更新插件
+autocmd("BufWritePost", {
+  group = myAutoGroup,
+  -- autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  callback = function()
+    if vim.fn.expand("<afile>") == "lua/basic/plugins.lua" then
+      vim.api.nvim_command("source lua/basic/plugins.lua")
+      vim.api.nvim_command("PackerSync")
+    end
+  end,
+})
+
+-- 用o换行不要延续注释
+autocmd("BufEnter", {
+  group = myAutoGroup,
+  pattern = "*",
+  callback = function()
+    vim.opt.formatoptions = vim.opt.formatoptions
+        - "o" -- O and o, don't continue comments
+        + "r" -- But do continue when pressing enter.
+  end,
+})

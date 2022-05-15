@@ -14,9 +14,9 @@ local platform_python = {
 
 -- 获取平台 undotree 路径
 local platform_undotree = {
-  MAC = "~/.config/nvim/undodir",
-  UNIX = "~/.config/nvim/undodir",
-  WINDOWS = "C:\\Users\\%USERNAME%\\AppData\\Local\\nvim\\undodir"
+  MAC = "~/.config/nvim/undotree",
+  UNIX = "~/.cache/nvim/undotree",
+  WINDOWS = "C:\\Users\\%USERNAME%\\AppData\\Local\\nvim\\undotree"
 }
 
 -- 获取平台 代码片段存储路径
@@ -54,7 +54,7 @@ vim.g.python_path = platform_python[vim.g.platform_info]
 -- 指定代码片段存储路径
 vim.g.vsnip_snippet_dir = platform_snippet[vim.g.platform_info]
 -- 指定 undotree 缓存存放路径
-vim.g.undotree_dir = "~/.cache/nvim/undodir"
+vim.g.undotree_dir = platform_undotree[vim.g.platform_info]
 -- 指定 lint 配置文件路径
 vim.g.lint_config_path = platform_lint[vim.g.platform_info]
 -- 指定 translate 代理服务器
