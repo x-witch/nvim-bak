@@ -92,6 +92,8 @@ return packer.startup(
   use "kosayoda/nvim-lightbulb" -- codeaction 提示代码行为
   -- use "jose-elias-alvarez/null-ls.nvim"
   use "ray-x/lsp_signature.nvim" -- 获得函数签名
+  use "folke/trouble.nvim"
+  use "SmiteshP/nvim-gps"
 
   -- 自动补全系列插件
   use {
