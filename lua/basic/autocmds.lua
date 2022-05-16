@@ -41,15 +41,15 @@ autocmd("BufEnter", {
 -- end
 -- vim.cmd("autocmd InsertLeave * call FcitxToggleInput()")
 
--- autocmd({ "InsertLeave" }, {
---   pattern = { "*" },
---   callback = function()
---     local input_status = tonumber(vim.fn.system("fcitx5-remote"))
---     if input_status == 2 then
---       vim.fn.system("fcitx5-remote -c")
---     end
---   end,
--- })
+autocmd({ "InsertLeave" }, {
+  pattern = { "*" },
+  callback = function()
+    local input_status = tonumber(vim.fn.system("fcitx5-remote"))
+    if input_status == 2 then
+      vim.fn.system("fcitx5-remote -c")
+    end
+  end,
+})
 
 -- 自动切换输入法，需要安装 im-select
 -- https://github.com/daipeihust/im-select
