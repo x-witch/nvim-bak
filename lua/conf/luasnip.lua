@@ -4,7 +4,6 @@ if not ok then
   return
 end
 
-local ls = require("luasnip")
 -- some shorthands...
 local s = luasnip.snippet
 local sn = luasnip.snippet_node
@@ -163,7 +162,7 @@ local date_input = function(args, state, fmt)
   return sn(nil, i(1, os.date(fmt)))
 end
 
-ls.snippets = {
+luasnip.snippets = {
   -- When trying to expand a snippet, luasnip first searches the tables for
   -- each filetype specified in 'filetype' followed by 'all'.
   -- If ie. the filetype is 'lua.c'
@@ -230,19 +229,19 @@ ls.snippets = {
     -- Parsing snippets: First parameter: Snippet-Trigger, Second: Snippet body.
     -- Placeholders are parsed into choices with 1. the placeholder text(as a snippet) and 2. an empty string.
     -- This means they are not SELECTed like in other editors/Snippet engines.
-    ls.parser.parse_snippet(
+    luasnip.parser.parse_snippet(
       "lspsyn",
       "Wow! This ${1:Stuff} really ${2:works. ${3:Well, a bit.}}"
     ),
 
     -- When wordTrig is set to false, snippets may also expand inside other words.
-    ls.parser.parse_snippet(
+    luasnip.parser.parse_snippet(
       { trig = "te", wordTrig = false },
       "${1:cond} ? ${2:true} : ${3:false}"
     ),
 
     -- When regTrig is set, trig is treated like a pattern, this snippet will expand after any number.
-    ls.parser.parse_snippet({ trig = "%d", regTrig = true }, "A Number!!"),
+    luasnip.parser.parse_snippet({ trig = "%d", regTrig = true }, "A Number!!"),
     -- Using the condition, it's possible to allow expansion only in specific cases.
     s("cond", {
       t("will only expand in c-style comments"),
@@ -471,7 +470,7 @@ ls.snippets = {
 }
 
 -- autotriggered snippets have to be defined in a separate table, luasnip.autosnippets.
-ls.autosnippets = {
+luasnip.autosnippets = {
   all = {
     s("autotrigger", {
       t("autosnippet"),
@@ -480,9 +479,9 @@ ls.autosnippets = {
 }
 
 -- in a lua file: search lua-, then c-, then all-snippets.
-ls.filetype_extend("lua", { "c" })
+luasnip.filetype_extend("lua", { "c" })
 -- in a cpp file: search c-snippets, then all-snippets only (no cpp-snippets!!).
-ls.filetype_set("cpp", { "c" })
+luasnip.filetype_set("cpp", { "c" })
 --[[
 -- 除了定义你自己的代码片段，你还可以从“类似 vscode”的包中加载代码片段
 -- 在 json 文件中公开片段，例如 <https://github.com/rafamadriz/friendly-snippets>.
