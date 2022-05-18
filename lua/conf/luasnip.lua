@@ -1,12 +1,18 @@
+local ok, luasnip = pcall(require, "luasnip")
+if not ok then
+  vim.notify "Could not load luasnip"
+  return
+end
+
 local ls = require("luasnip")
 -- some shorthands...
-local s = ls.snippet
-local sn = ls.snippet_node
-local t = ls.text_node
-local i = ls.insert_node
-local f = ls.function_node
-local c = ls.choice_node
-local d = ls.dynamic_node
+local s = luasnip.snippet
+local sn = luasnip.snippet_node
+local t = luasnip.text_node
+local i = luasnip.insert_node
+local f = luasnip.function_node
+local c = luasnip.choice_node
+local d = luasnip.dynamic_node
 local l = require("luasnip.extras").lambda
 local r = require("luasnip.extras").rep
 local p = require("luasnip.extras").partial
@@ -19,7 +25,7 @@ local types = require("luasnip.util.types")
 local conds = require("luasnip.extras.expand_conditions")
 
 -- Every unspecified option will be set to the default.
-ls.config.set_config({
+luasnip.config.set_config({
   history = true,
   -- Update more often, :h events for more info.
   updateevents = "TextChanged,TextChangedI",
@@ -484,11 +490,11 @@ ls.filetype_set("cpp", { "c" })
 -- 需要自己扩展表格而不是设置一个新表格。
 ]]
 --require("luasnip/loaders/from_vscode").load({ include = { "javascript" } }) -- Load only python snippets
-require("luasnip/loaders/from_vscode").load() -- Load only python snippets
+-- require("luasnip/loaders/from_vscode").load() -- Load only python snippets
 -- The directories will have to be structured like eg. <https://github.com/rafamadriz/friendly-snippets> (include
 -- a similar `package.json`)
---require("luasnip/loaders/from_vscode").load({ paths = { "./my-snippets" } }) -- Load snippets from my-snippets folder
---require("luasnip/loaders/from_vscode").load({ paths = { "/Users/用户名/Documents/my-snippets/" } }) -- Load snippets from my-snippets folder
+--require("luasnip/loaders/from_vscode").load({ paths = { "./snippets" } }) -- Load snippets from snippets folder
+--require("luasnip/loaders/from_vscode").load({ paths = { "/Users/用户名/Documents/snippets/" } }) -- Load snippets from snippets folder
 
 -- You can also use lazy loading so you only get in memory snippets of languages you use
---require("luasnip/loaders/from_vscode").lazy_load() -- You can pass { paths = "./snippets/"} as well
+require("luasnip/loaders/from_vscode").lazy_load() -- You can pass { paths = "./snippets/"} as well

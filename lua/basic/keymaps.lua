@@ -70,7 +70,8 @@ keymap("n", "<leader>2", "<cmd>UndotreeToggle<CR>", opts)
 
 
 -- copilot
-keymap("i", "<C-l>", "copilot#Accept('')", { silent = true, expr = true })
+-- keymap("i", "<C-l>", "copilot#Accept('')", { silent = true, expr = true })
+keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, script = true, expr = true })
 -- 使用 C-l 确认补全
 -- 使用 M-[ 查看上一个补全
 -- 使用 M-[ 查看下一个补全
@@ -87,6 +88,16 @@ keymap("n", "<C-l>", "<cmd>BufferLineCycleNext<CR>", opts)
 keymap("n", "<leader>bh", "<cmd>BufferLineCloseLeft<CR>", opts)
 -- 关闭右侧缓冲区
 keymap("n", "<leader>bl", "<cmd>BufferLineCloseRight<CR>", opts)
+-- select buffer
+keymap("n", "<M-1>", "<Cmd>BufferLineGoToBuffer 1<CR>", opts)
+keymap("n", "<M-2>", "<Cmd>BufferLineGoToBuffer 2<CR>", opts)
+keymap("n", "<M-3>", "<Cmd>BufferLineGoToBuffer 3<CR>", opts)
+keymap("n", "<M-4>", "<Cmd>BufferLineGoToBuffer 4<CR>", opts)
+keymap("n", "<M-5>", "<Cmd>BufferLineGoToBuffer 5<CR>", opts)
+keymap("n", "<M-6>", "<Cmd>BufferLineGoToBuffer 6<CR>", opts)
+keymap("n", "<M-7>", "<Cmd>BufferLineGoToBuffer 7<CR>", opts)
+keymap("n", "<M-8>", "<Cmd>BufferLineGoToBuffer 8<CR>", opts)
+keymap("n", "<M-9>", "<Cmd>BufferLineGoToBuffer 9<CR>", opts)
 
 -- Neoformat 格式化
 keymap("n", "<leader>fl", "<cmd>Neoformat<CR>", opts)

@@ -97,7 +97,7 @@ lualine.setup({
     lualine_a = { branch, diagnostics },
     lualine_b = { mode },
     lualine_c = { { gps.get_location, cond = gps.is_available } },
-    lualine_x = { diff, spaces, "encoding", filetype, "fileformat" },
+    lualine_x = { "copilot", diff, spaces, "encoding", filetype, "fileformat" },
     lualine_y = { location },
     lualine_z = { progress },
   },
