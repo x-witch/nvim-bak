@@ -1,7 +1,7 @@
 -- https://github.com/petertriho/nvim-scrollbar
 local status_ok, scrollbar = pcall(require, "scrollbar")
 if not status_ok then
-  vim.notify("lualine not found!")
+  vim.notify("scrollbar not found!")
   return
 end
 
