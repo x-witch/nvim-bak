@@ -94,7 +94,6 @@ return packer.startup(
   use "ray-x/lsp_signature.nvim" -- 获得函数签名
   use "folke/trouble.nvim"
   use "SmiteshP/nvim-gps"
-  use "folke/trouble.nvim"
 
   -- 自动补全系列插件
   use {
