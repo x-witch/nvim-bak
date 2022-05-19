@@ -162,3 +162,20 @@ keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 keymap("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+
+-- hlslengs
+keymap('n', 'n',
+  [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
+  opts)
+keymap('n', 'N',
+  [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
+  opts)
+keymap('n', '*', [[*<Cmd>lua require('hlslens').start()<CR>]], opts)
+keymap('n', '#', [[#<Cmd>lua require('hlslens').start()<CR>]], opts)
+keymap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]], opts)
+keymap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], opts)
+
+keymap('x', '*', [[*<Cmd>lua require('hlslens').start()<CR>]], opts)
+keymap('x', '#', [[#<Cmd>lua require('hlslens').start()<CR>]], opts)
+keymap('x', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]], opts)
+keymap('x', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], opts)
