@@ -134,10 +134,8 @@ return packer.startup(
     "catppuccin/nvim",
     as = "catppuccin"
   }
-  use {
-    "projekt0n/github-nvim-theme"
-    -- tag = "v0.0.4",
-  }
+  -- use "projekt0n/github-nvim-theme"
+
   -- use 'folke/tokyonight.nvim'  -- tokyonight主题
   use "goolord/alpha-nvim" --欢迎界面
   use "akinsho/bufferline.nvim" -- 顶部标签栏

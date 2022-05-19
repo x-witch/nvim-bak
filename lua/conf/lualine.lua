@@ -70,7 +70,6 @@ local location = {
 local progress = function()
   local current_line = vim.fn.line(".")
   local total_lines = vim.fn.line("$")
-  -- local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
   local chars = { "██", "▇▇", "▆▆", "▅▅", "▄▄", "▃▃", "▂▂", "▁▁", " ", }
   local line_ratio = current_line / total_lines
   local index = math.ceil(line_ratio * #chars)
@@ -97,7 +96,7 @@ lualine.setup({
     lualine_a = { branch, diagnostics },
     lualine_b = { mode },
     lualine_c = { { gps.get_location, cond = gps.is_available } },
-    lualine_x = { "copilot", diff, spaces, "encoding", filetype, "fileformat" },
+    lualine_x = { diff, spaces, "encoding", filetype, "fileformat" },
     lualine_y = { location },
     lualine_z = { progress },
   },

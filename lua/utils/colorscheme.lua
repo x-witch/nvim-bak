@@ -10,6 +10,6 @@ end
 
 if colorscheme == "catppuccin" then
   require "themes.catppuccin"
-elseif colorscheme == "github_light" then
+elseif colorscheme == "github_*" then
   require "themes.github-nvim-theme"
 end
