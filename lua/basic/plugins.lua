@@ -135,6 +135,11 @@ return packer.startup(
     as = "catppuccin"
   }
   -- use "projekt0n/github-nvim-theme"
+  use({
+    'rose-pine/neovim',
+    as = 'rose-pine',
+    tag = 'v1.*',
+  })
 
   -- use 'folke/tokyonight.nvim'  -- tokyonight主题
   use "goolord/alpha-nvim" --欢迎界面
