@@ -70,8 +70,8 @@ keymap("n", "<leader>2", "<cmd>UndotreeToggle<CR>", opts)
 
 
 -- copilot
--- keymap("i", "<C-l>", "copilot#Accept('')", { silent = true, expr = true })
-keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, script = true, expr = true })
+keymap("i", "<C-l>", "copilot#Accept('')", { silent = true, expr = true })
+-- keymap("i", "<C-J>", 'copilot#Accept("<CR>")', { silent = true, script = true, expr = true })
 -- 使用 C-l 确认补全
 -- 使用 M-[ 查看上一个补全
 -- 使用 M-[ 查看下一个补全
@@ -150,7 +150,7 @@ keymap("n", "<leader>tt", "<cmd>exe v:count.'ToggleTerm'<CR>", opts)
 keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
--- keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+-- keymap('i', '<C-j>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 keymap("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
 keymap("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
 keymap("n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
@@ -164,17 +164,12 @@ keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 keymap("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
 -- hlslengs
-keymap('n', 'n',
-  [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
-  opts)
-keymap('n', 'N',
-  [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
-  opts)
+keymap('n', 'n', [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]], opts)
+keymap('n', 'N', [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]], opts)
 keymap('n', '*', [[*<Cmd>lua require('hlslens').start()<CR>]], opts)
 keymap('n', '#', [[#<Cmd>lua require('hlslens').start()<CR>]], opts)
 keymap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]], opts)
 keymap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], opts)
-
 keymap('x', '*', [[*<Cmd>lua require('hlslens').start()<CR>]], opts)
 keymap('x', '#', [[#<Cmd>lua require('hlslens').start()<CR>]], opts)
 keymap('x', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]], opts)
