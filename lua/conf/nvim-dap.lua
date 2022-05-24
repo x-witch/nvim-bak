@@ -21,7 +21,7 @@
 --     dap.configurations[dap_name] = dap_options.configurations
 -- end
 
-
+local keymaps = require("basic.keymaps")
 local M = {}
 
 local function config_dapi_and_sign()
@@ -29,7 +29,7 @@ local function config_dapi_and_sign()
   dap_install.setup {
     installation_path = vim.fn.stdpath "data" .. "/dapinstall/",
   }
--- 设置断点样式
+  -- 设置断点样式
   local dap_breakpoint = {
     error = {
       text = "🛑",
@@ -67,7 +67,7 @@ local function config_dapui()
     dap.repl.close()
     dapui.close()
     vim.api.nvim_command("DapVirtualTextDisable")
-    vim.api.nvim_command("bdelete! term:")   -- close debug temrinal
+    vim.api.nvim_command("bdelete! term:") -- close debug temrinal
   end
 
   dap.listeners.after.event_initialized["dapui_config"] = function()
@@ -104,6 +104,89 @@ local function config_debuggers()
   -- require("config.dap.rust").setup()
   -- require("config.dap.go").setup()
 end
+
+keymaps.register({
+  {
+    mode = { "n" },
+    lhs = "<leader>du",
+    rhs = "<cmd>lua require'dapui'.toggle()<CR>",
+    options = { silent = true },
+    description = "显示或隐藏调试界面",
+  },
+  {
+    mode = { "n" },
+    lhs = "<leader>db",
+    rhs = function()
+      require("dap").toggle_breakpoint()
+    end,
+    options = { silent = true },
+    description = "Mark or delete breakpoints",
+  },
+  {
+    mode = { "n" },
+    lhs = "<leader>dc",
+    rhs = function()
+      require("dap").clear_breakpoints()
+    end,
+    options = { silent = true },
+    description = "Clear breakpoints in the current buffer",
+  },
+  {
+    mode = { "n" },
+    lhs = "<F5>",
+    rhs = function()
+      require("dap").continue()
+    end,
+    options = { silent = true },
+    description = "Enable debugging or jump to the next breakpoint",
+  },
+  {
+    mode = { "n" },
+    lhs = "<F6>",
+    rhs = function()
+      require("dap").step_into()
+    end,
+    options = { silent = true },
+    description = "Step into",
+  },
+  {
+    mode = { "n" },
+    lhs = "<F7>",
+    rhs = function()
+      ---@diagnostic disable-next-line: missing-parameter
+      require("dap").step_over()
+    end,
+    options = { silent = true },
+    description = "Step over",
+  },
+  {
+    mode = { "n" },
+    lhs = "<F8>",
+    rhs = function()
+      require("dap").step_out()
+    end,
+    options = { silent = true },
+    description = "Step out",
+  },
+  {
+    mode = { "n" },
+    lhs = "<F9>",
+    rhs = function()
+      require("dap").run_last()
+    end,
+    options = { silent = true },
+    description = "Rerun debug",
+  },
+  {
+    mode = { "n" },
+    lhs = "<F10>",
+    rhs = function()
+      require("dap").terminate()
+    end,
+    options = { silent = true },
+    description = "Close debug",
+  },
+})
 
 function M.setup()
   config_dapi_and_sign()
