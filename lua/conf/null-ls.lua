@@ -19,7 +19,8 @@ null_ls.setup({
     -- diagnostics.flake8,
     completion.spell,
     -- 前端代码格式化工具
-    formatting.prettier.with({ -- 比默认少了 markdown
+    formatting.prettier.with({
+      -- 比默认少了 markdown
       filetypes = {
         "javascript",
         "javascriptreact",
@@ -55,16 +56,16 @@ null_ls.setup({
     -- end
     -- auto format when save file
 
-    -- if client.resolved_capabilities.document_formatting then
-    --   vim.cmd([[
-    --     augroup LspFormatting
-    --     autocmd! * <buffer>
-    --     autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-    --     augroup END
-    --   ]])
-    -- end
+    if client.resolved_capabilities.document_formatting then
+      vim.cmd([[
+        augroup LspFormatting
+        autocmd! * <buffer>
+        autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+        augroup END
+      ]])
+    end
 
-    vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()']])
+    -- vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()']])
     -- if client.resolved_capabilities.document_formatting then
     --   vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
     -- end
