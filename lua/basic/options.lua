@@ -23,8 +23,8 @@ local options = {
   -- 是否显示相对行号
   relativenumber = true,
   -- 设定光标上下两侧最少保留的屏幕行数
-  scrolloff = 10,
-  sidescrolloff = 10,
+  -- scrolloff = 10,
+  -- sidescrolloff = 10,
   -- 是否支持鼠标操作
   mouse = "a",
   -- 是否启用系统剪切板

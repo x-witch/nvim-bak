@@ -19,23 +19,12 @@ for type, icon in pairs(signs) do
 end
 
 vim.diagnostic.config({
-  -- virtual_text = { prefix = "●", source = "always" },
-  virtual_text = false,
-  -- signs = {
-  --   active = signs,
-  -- },
   signs = true,
+  virtual_text = false, -- virtual_text = { prefix = "●", source = "always" },
   update_in_insert = true,
   underline = true,
   severity_sort = true,
-  float = {
-    focusable = false,
-    style = "minimal",
-    border = "rounded",
-    source = "always",
-    header = "",
-    prefix = "",
-  },
+  float = { source = "always" },
 })
 -- TODO: Use lsp_signature instead
 vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#1f2335]]

@@ -98,7 +98,7 @@ keymaps.register({
   },
   {
     mode = { "n" },
-    lhs = "<C-left>",
+    lhs = "<C-right>",
     rhs = "<cmd>vertical resize+1<CR>",
     options = { silent = true },
     description = "修改分屏大小",
@@ -168,7 +168,13 @@ keymaps.register({
     options = { silent = true },
     description = "插入模式下的上下左右移动",
   },
-
+  {
+    mode = { "t" },
+    lhs = "<esc>",
+    rhs = "<c-\\><c-n>",
+    options = { silent = true },
+    description = "Escape terminal insert mode",
+  },
 
   -- 插件快捷键 --
   -- nvim-tree
@@ -453,7 +459,7 @@ return keymaps
 -- keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 -- keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 -- keymap("n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
---
+
 -- -- hlslengs
 -- keymap('n', 'n', [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]], opts)
 -- keymap('n', 'N', [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]], opts)
