@@ -106,7 +106,7 @@ return packer.startup(
   use "tami5/lspsaga.nvim" -- LSP UI 美化
   use "mfussenegger/nvim-lint" -- 扩展LSP诊断
   use "kosayoda/nvim-lightbulb" -- codeaction 提示代码行为
-  -- use "jose-elias-alvarez/null-ls.nvim"
+  use "jose-elias-alvarez/null-ls.nvim"
   use "ray-x/lsp_signature.nvim" -- 获得函数签名
   use "folke/trouble.nvim"
   use "SmiteshP/nvim-gps"
