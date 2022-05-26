@@ -17,8 +17,6 @@ null_ls.setup({
     -- formatting.clang_format, -- for cpp
     -- formatting.gofmt, -- for golang
     -- diagnostics.flake8,
-    completion.spell,
-    -- 前端代码格式化工具
     formatting.prettier.with({
       -- 比默认少了 markdown
       filetypes = {
@@ -37,6 +35,8 @@ null_ls.setup({
       },
       prefer_local = "node_modules/.bin",
     }),
+    completion.spell,
+
     -- code actions ---------------------
     code_actions.gitsigns,
     code_actions.eslint.with({
@@ -55,7 +55,6 @@ null_ls.setup({
     --
     -- end
     -- auto format when save file
-
     if client.resolved_capabilities.document_formatting then
       vim.cmd([[
         augroup LspFormatting
@@ -64,10 +63,5 @@ null_ls.setup({
         augroup END
       ]])
     end
-
-    -- vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()']])
-    -- if client.resolved_capabilities.document_formatting then
-    --   vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
-    -- end
   end,
 })
