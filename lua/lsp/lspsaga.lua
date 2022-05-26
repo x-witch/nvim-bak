@@ -1,6 +1,12 @@
 -- https://github.com/tami5/lspsaga.nvim
 -- lsp UI相关设置
 
+local status_ok, lspsaga = pcall(require, "lspsaga")
+if not status_ok then
+  vim.notify("lspsaga not found!")
+  return
+end
+
 -- 自定义图标
 vim.diagnostic.config({
   virtual_text = true,
@@ -60,7 +66,6 @@ lspkind.init({
   },
 })
 
-local lspsaga = require("lspsaga")
 lspsaga.setup({ -- defaults ...
   debug = false,
   use_saga_diagnostic_sign = true,
@@ -135,12 +140,6 @@ M.formatting = {
 return M
 
 
--- local status_ok, lspsaga = pcall(require, "lspsaga")
--- if not status_ok then
---   vim.notify("lspsaga not found!")
---   return
--- end
---
 -- lspsaga.setup(
 --   {
 --   -- 提示边框样式：round、single、double

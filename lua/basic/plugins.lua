@@ -158,6 +158,7 @@ return packer.startup(
   use "kyazdani42/nvim-tree.lua" --资源管理器
   -- use "liuchengxu/vista.vim"  -- 代码大纲
   use "stevearc/aerial.nvim" -- 代码大纲
+  use 'simrat39/symbols-outline.nvim'
 
   -- telescope
   use {

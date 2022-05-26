@@ -1,13 +1,11 @@
 local status_ok, aerial = pcall(require, "aerial")
 if not status_ok then
   vim.notify("aerial not found")
-	return
+  return
 end
 
 -- Call the setup function to change the default behavior
 aerial.setup({
-  -- Priority list of preferred backends for aerial.
-  -- This can be a filetype map (see :help aerial-filetype-map)
   backends = { "treesitter", "lsp", "markdown" },
 
   -- Enum: persist, close, auto, global
@@ -45,6 +43,7 @@ aerial.setup({
     "Module",
     "Method",
     "Struct",
+    "Property",
   },
 
   -- Enum: split_width, full_width, last, none
@@ -132,7 +131,7 @@ aerial.setup({
   -- max_width = {40, 0.2} means "the lesser of 40 columns or 20% of total"
   max_width = { 50 },
   width = nil,
-  min_width = 10,
+  min_width = 30,
 
   -- Set default symbol icons to use patched font icons (see https://www.nerdfonts.com/)
   -- "auto" will set it to true if nvim-web-devicons or lspkind-nvim is installed.
@@ -234,4 +233,3 @@ aerial.setup({
     update_delay = 300,
   },
 })
-

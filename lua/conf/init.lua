@@ -21,6 +21,7 @@ M.setup = function()
     "filetype",
     "vim-translator",
     "luasnip",
+    "symbols_output",
   }
 
   local helper_set = {}

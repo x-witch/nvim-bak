@@ -377,6 +377,11 @@ _G.packer_plugins = {
     path = "/home/nure/.local/share/nvim/site/pack/packer/opt/switch.vim",
     url = "https://github.com/AndrewRadev/switch.vim"
   },
+  ["symbols-outline.nvim"] = {
+    loaded = true,
+    path = "/home/nure/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim",
+    url = "https://github.com/simrat39/symbols-outline.nvim"
+  },
   ["telescope-dap.nvim"] = {
     loaded = true,
     path = "/home/nure/.local/share/nvim/site/pack/packer/start/telescope-dap.nvim",
@@ -458,17 +463,17 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Filetype lazy-loads
 time([[Defining lazy-load filetype autocommands]], true)
+vim.cmd [[au FileType html ++once lua require("packer.load")({'emmet-vim'}, { ft = "html" }, _G.packer_plugins)]]
+vim.cmd [[au FileType css ++once lua require("packer.load")({'emmet-vim'}, { ft = "css" }, _G.packer_plugins)]]
 vim.cmd [[au FileType javascript ++once lua require("packer.load")({'emmet-vim'}, { ft = "javascript" }, _G.packer_plugins)]]
 vim.cmd [[au FileType typescript ++once lua require("packer.load")({'emmet-vim'}, { ft = "typescript" }, _G.packer_plugins)]]
 vim.cmd [[au FileType vue ++once lua require("packer.load")({'emmet-vim'}, { ft = "vue" }, _G.packer_plugins)]]
-vim.cmd [[au FileType html ++once lua require("packer.load")({'emmet-vim'}, { ft = "html" }, _G.packer_plugins)]]
 vim.cmd [[au FileType xml ++once lua require("packer.load")({'emmet-vim'}, { ft = "xml" }, _G.packer_plugins)]]
-vim.cmd [[au FileType css ++once lua require("packer.load")({'emmet-vim'}, { ft = "css" }, _G.packer_plugins)]]
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'vimcdoc', 'switch.vim', 'nvim-scrollbar', 'undotree'}, { event = "BufRead *" }, _G.packer_plugins)]]
-vim.cmd [[au BufNewFile * ++once lua require("packer.load")({'vimcdoc', 'switch.vim', 'nvim-scrollbar', 'undotree'}, { event = "BufNewFile *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'switch.vim', 'nvim-scrollbar', 'vimcdoc', 'undotree'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufNewFile * ++once lua require("packer.load")({'switch.vim', 'nvim-scrollbar', 'vimcdoc', 'undotree'}, { event = "BufNewFile *" }, _G.packer_plugins)]]
 vim.cmd [[au VimEnter * ++once lua require("packer.load")({'faster.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
