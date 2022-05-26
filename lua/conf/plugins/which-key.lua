@@ -85,18 +85,18 @@ local mappings = {
   -- ["t"] = { "<cmd>UltestSummary<CR>", "Unit Test" },
   -- ["v"] = { "<cmd>lua require('telescope').extensions.neoclip.default(require('telescope.themes').get_ivy())<cr>", "Clipboard Manager" },
 
-  c = {
-    name = "CMake",
-    g = { "<cmd>CMake configure<CR>", "Configure" },
-    t = { "<cmd>CMake select_target<CR>", "SelectTarget" },
-    T = { "<cmd>CMake select_build_type<CR>", "SelectBuildType" },
-    b = { "<cmd>CMake build<CR>", "BuildTarget" },
-    a = { "<cmd>CMake build_all<CR>", "BuildAll" },
-    r = { "<cmd>CMake build_and_run<CR>", "Run" },
-    d = { "<cmd>CMake build_and_debug<CR>", "DebugTarget" },
-    c = { "<cmd>CMake cancel<CR>", "Cancel" },
-    s = { "<cmd>CMake set_target_args<CR>", "SetArg" }
-  },
+  -- c = {
+  --   name = "CMake",
+  --   g = { "<cmd>CMake configure<CR>", "Configure" },
+  --   t = { "<cmd>CMake select_target<CR>", "SelectTarget" },
+  --   T = { "<cmd>CMake select_build_type<CR>", "SelectBuildType" },
+  --   b = { "<cmd>CMake build<CR>", "BuildTarget" },
+  --   a = { "<cmd>CMake build_all<CR>", "BuildAll" },
+  --   r = { "<cmd>CMake build_and_run<CR>", "Run" },
+  --   d = { "<cmd>CMake build_and_debug<CR>", "DebugTarget" },
+  --   c = { "<cmd>CMake cancel<CR>", "Cancel" },
+  --   s = { "<cmd>CMake set_target_args<CR>", "SetArg" }
+  -- },
   d = {
     name = "Debug",
     R = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor" },

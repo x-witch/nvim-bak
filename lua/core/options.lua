@@ -88,3 +88,4 @@ vim.opt_global.formatoptions = vim.opt_global.formatoptions - { "c", "r", "o" }
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
+

@@ -7,10 +7,10 @@ end
 local formatting = null_ls.builtins.formatting
 -- local diagnostics = null_ls.builtins.diagnostics
 -- local code_actions = null_ls.builtins.code_actions
-local completion = null_ls.builtins.completion
+-- local completion = null_ls.builtins.completion
 
 null_ls.setup({
-  debug = false,
+  -- debug = false,
   sources = {
     -- formatting.clang_format, -- for cpp
     -- formatting.gofmt, -- for golang
@@ -39,15 +39,15 @@ null_ls.setup({
   },
 
   -- you can reuse a shared lspconfig on_attach callback here
-  on_attach = function(client)
-    -- NOTE: 如果想要禁止某种语言在save时format，可以添加判定
-    -- if client.resolved_capabilities.document_formatting then
-    --   vim.cmd([[
-    --     augroup LspFormatting
-    --     autocmd! * <buffer>
-    --     autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-    --     augroup END
-    --   ]])
-    -- end
-  end,
+  -- on_attach = function(client)
+  -- NOTE: 如果想要禁止某种语言在save时format，可以添加判定
+  -- if client.resolved_capabilities.document_formatting then
+  --   vim.cmd([[
+  --     augroup LspFormatting
+  --     autocmd! * <buffer>
+  --     autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+  --     augroup END
+  --   ]])
+  -- end
+  -- end,
 })
