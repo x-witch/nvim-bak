@@ -6,8 +6,8 @@ end
 
 local formatting = null_ls.builtins.formatting
 -- local diagnostics = null_ls.builtins.diagnostics
-local code_actions = null_ls.builtins.code_actions
-local completion = null_ls.builtins.completion
+-- local code_actions = null_ls.builtins.code_actions
+-- local completion = null_ls.builtins.completion
 
 null_ls.setup({
   debug = false,
@@ -35,13 +35,7 @@ null_ls.setup({
       },
       prefer_local = "node_modules/.bin",
     }),
-    completion.spell,
-
-    -- code actions ---------------------
-    code_actions.gitsigns,
-    code_actions.eslint.with({
-      prefer_local = "node_modules/.bin",
-    }),
+    -- completion.spell,
   },
   -- #{m}: message
   -- #{s}: source name (defaults to null-ls if not specified)
