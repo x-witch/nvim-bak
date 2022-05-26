@@ -9,7 +9,7 @@ if not status_ok then
 end
 
 if colorscheme == "catppuccin" then
-  require "themes.catppuccin"
+  require "conf.themes.catppuccin"
 elseif colorscheme == "rose-pine" then
-  require "themes.rose-pine"
+  require "conf.themes.rose-pine"
 end

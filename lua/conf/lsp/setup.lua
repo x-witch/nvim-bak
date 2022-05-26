@@ -9,7 +9,7 @@
 
 -- Setup lsp-config & installer
 
-local keymaps = require("basic.keymaps")
+local keymaps = require("core.keymaps")
 
 -- 诊断样式定制
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
@@ -300,9 +300,9 @@ end
 
 -- 启动 LSP 服务器
 local language_servers_config = {
-  sumneko_lua = require("lsp.svr-settings.sumneko_lua"),
-  pyright = require('lsp.svr-settings.pyright'),
-  jsonls = require('lsp.svr-settings.jsonls'),
+  sumneko_lua = require("conf.lsp.svr-settings.sumneko_lua"),
+  pyright = require('conf.lsp.svr-settings.pyright'),
+  jsonls = require('conf.lsp.svr-settings.jsonls'),
 }
 
 -- 循环 LSP 服务器名称和配置

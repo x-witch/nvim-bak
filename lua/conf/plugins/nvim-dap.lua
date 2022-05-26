@@ -21,7 +21,7 @@
 --     dap.configurations[dap_name] = dap_options.configurations
 -- end
 
-local keymaps = require("basic.keymaps")
+local keymaps = require("core.keymaps")
 local M = {}
 
 local function config_dapi_and_sign()
