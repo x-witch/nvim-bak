@@ -22,9 +22,11 @@ local options = {
   number = true,
   -- 是否显示相对行号
   relativenumber = true,
+  -- Set the width of the number column, default is 4
+  numberwidth = 2,
   -- 设定光标上下两侧最少保留的屏幕行数
-  -- scrolloff = 10,
-  -- sidescrolloff = 10,
+  scrolloff = 10,
+  sidescrolloff = 10,
   -- 是否支持鼠标操作
   mouse = "a",
   -- 是否启用系统剪切板
@@ -41,6 +43,8 @@ local options = {
   autoindent = true,
   -- 设定自动缩进的策略为 plugin
   filetype = "plugin",
+  -- Highlight while searching
+  incsearch = true,
   -- 是否开启高亮搜索
   hlsearch = true,
   -- 是否在插入括号时短暂跳转到另一半括号上
@@ -61,15 +65,20 @@ local options = {
   foldmethod = "expr",
   foldexpr = "nvim_treesitter#foldexpr()",
   -- 指定代码折叠的最高层级为 100
-  foldlevel = 99,
+  foldlevel = 100,
+  -- Natural line breaks
+  linebreak = true,
   -- vertical diff split view
   diffopt = "vertical,filler,internal,context:4",
+  sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,globals",
   iskeyword = "@,48-57,_,-,192-255",
   fillchars = "vert:┃,horiz:━,verthoriz:╋,horizup:┻,horizdown:┳,vertleft:┫,vertright:┣",
 }
 
--- vim.cmd "set whichwrap+=<,>,[,],h,l"  --允许backspace和光标跨越行边界
-
+-- vim.opt.whichwrap:append("<>[]hl")  --允许backspace和光标跨越行边界
+-- vim.opt.listchars:append("space:⋅")
+-- vim.opt.listchars:append("eol:↴")
+-- vim.opt.listchars:append("tab:↹ ")
 vim.opt.shortmess:append('c')
 -- vim.opt.formatoptions:remove('c')
 -- vim.opt.formatoptions:remove('r')
