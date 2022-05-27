@@ -10,9 +10,10 @@
 -- Setup lsp-config & installer
 
 local keymaps = require("core.keymaps")
+local icons = require('utils.icons')
 
 -- 诊断样式定制
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local signs = icons.diagnostics
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
@@ -76,10 +77,9 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 
 -- 在 LSP 启动配置中添加一个 header，告诉 neovim 当出现帮助信息和签名信息的浮浮动窗口后应该为此窗口添加上一个边框
 -- 悬浮文档和签名帮助有浮动边框
-local handlers = {
-  ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border, }),
-  ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded", }),
-}
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded", })
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded", })
+
 
 keymaps.register({
   {
@@ -297,6 +297,23 @@ if cmp_nvim_lsp_ok then
   capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 end
 
+capabilities.textDocument.codeAction = {
+  dynamicRegistration = false,
+  codeActionLiteralSupport = {
+    codeActionKind = {
+      valueSet = {
+        "",
+        "quickfix",
+        "refactor",
+        "refactor.extract",
+        "refactor.inline",
+        "refactor.rewrite",
+        "source",
+        "source.organizeImports",
+      },
+    },
+  },
+}
 
 -- 启动 LSP 服务器
 local language_servers_config = {

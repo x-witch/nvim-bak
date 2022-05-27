@@ -133,10 +133,13 @@ if not status_luasnip_ok then
   return
 end
 
-require("luasnip.loaders.from_vscode").lazy_load() -- load freindly-snippets
-require("luasnip.loaders.from_vscode").load({ paths = { -- load custom snippets
+-- load freindly-snippets
+require("luasnip.loaders.from_vscode").lazy_load()
+-- Load snippets from user custom snippets folder
+require("luasnip.loaders.from_vscode").load({ paths = {
   vim.fn.stdpath("config") .. "/snippets"
-} }) -- Load snippets from user custom snippets folder
+} })
+local icons = require('utils.icons')
 
 cmp_config = {
   confirm_opts = {
@@ -154,33 +157,7 @@ cmp_config = {
   formatting = {
     fields = { "kind", "abbr", "menu" },
     max_width = 0,
-    kind_icons = {
-      Class = " ",
-      Color = " ",
-      Constant = "ﲀ ",
-      Constructor = " ",
-      Enum = "練",
-      EnumMember = " ",
-      Event = " ",
-      Field = " ",
-      File = "",
-      Folder = " ",
-      Function = " ",
-      Interface = "ﰮ ",
-      Keyword = " ",
-      Method = " ",
-      Module = " ",
-      Operator = "",
-      Property = " ",
-      Reference = " ",
-      Snippet = " ",
-      Struct = " ",
-      Text = " ",
-      TypeParameter = " ",
-      Unit = "塞",
-      Value = " ",
-      Variable = " ",
-    },
+    kind_icons = icons.kind_icons,
     source_names = {
       nvim_lsp = "(LSP)",
       treesitter = "(TS)",

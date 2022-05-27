@@ -8,7 +8,10 @@ end
 bufferline.setup({
   options = {
     mode = "buffers", -- set to "tabs" to only show tabpages instead
-    numbers = "ordinal", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
+    numbers = function(opts)
+      return string.format("%s", opts.id)
+    end,
+    -- numbers = "ordinal", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
     --- @deprecated, please specify numbers as a function to customize the styling
     -- number_style = "superscript", --| "subscript" | "" | { "none", "subscript" }, -- buffer_id at index 1, ordinal at index 2
     close_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
@@ -34,13 +37,19 @@ bufferline.setup({
         return vim.fn.fnamemodify(buf.name, ':t:r')
       end
     end,
-    max_name_length = 18,
+    max_name_length = 20,
     max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
     tab_size = 18,
     themable = true,
     diagnostics = false, --| "nvim_lsp" | "coc",
     diagnostics_update_in_insert = false,
     diagnostics_indicator = function(count, level, diagnostics_dict, context)
+      -- local s = " "
+      -- for e, n in pairs(diagnostics_dict) do
+      --   local sym = e == "error" and "  " or (e == "warning" and "  " or "  ")
+      --   s = s .. n .. sym
+      -- end
+      -- return s
       return "(" .. count .. ")"
     end,
 
@@ -74,8 +83,8 @@ bufferline.setup({
     -- [focused and unfocused]. eg: { '|', '|' }
     view = "multiwindow",
     separator_style = "thin", --| "slant" | "thick" | "thin" | { 'any', 'any' },
-    enforce_regular_tabs = false, --| true,
-    always_show_bufferline = true, -- | false,
+    enforce_regular_tabs = true, --| true,
+    always_show_bufferline = false, -- | false,
     sort_by = 'directory', -- ,'id' | 'extension' | 'relative_directory' | 'directory' | 'tabs' | function(buffer_a, buffer_b)
     --   -- add custom logic
     --   return buffer_a.modified > buffer_b.modified

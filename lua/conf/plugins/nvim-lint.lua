@@ -2,16 +2,16 @@
 -- WARN: nvim-lint 手动下载诊断工具，确保该诊断工具能被全局调用
 -- pip3 install pylint
 require("lint").linters_by_ft = {
-    python = {"pylint"}
-    -- javascript = {"eslint"},
-    -- typescript = {"eslint"},
-    -- go = {"golangcilint"}
+  python = { "pylint" }
+  -- javascript = {"eslint"},
+  -- typescript = {"eslint"},
+  -- go = {"golangcilint"}
 }
 -- 配置 pylint
 require("lint.linters.pylint").args = {
-    "-f",
-    "json",
-    "--rcfile=~/.config/nvim/lint/pylint.conf"
+  "-f",
+  "json",
+  "--rcfile=~/.config/nvim/lint/pylint.conf"
 }
 -- 何时触发检测：
 -- BufEnter    ： 载入 Buf 后
@@ -21,6 +21,7 @@ vim.cmd([[
 au BufEnter * lua require('lint').try_lint()
 au BufWritePost * lua require('lint').try_lint()
 ]])
+
 -- vim.api.nvim_create_autocmd(
 --     {"InsertLeave", "TextChanged", "BufNew"},
 --     {
