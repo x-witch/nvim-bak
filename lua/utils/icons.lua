@@ -94,7 +94,7 @@ M.kind_icons = {
   Function = " ",
   Interface = "ﰮ ",
   Keyword = " ",
-  Method = " ",
+  Method = " ",
   Module = " ",
   Operator = "",
   Property = " ",
@@ -105,7 +105,7 @@ M.kind_icons = {
   TypeParameter = " ",
   Unit = "塞",
   Value = " ",
-  Variable = " ",
+  Variable = " ",
 }
 
 return M

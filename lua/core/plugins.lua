@@ -15,7 +15,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
     install_path,
   })
   print "Installing packer close and reopen Neovim..."
-  vim.cmd [[packadd packer.nvim]]
+  vim.cmd([[packadd packer.nvim]])
   -- https://github.com/wbthomason/packer.nvim/issues/750
   local rtp_addition = vim.fn.stdpath("data") .. "/site/pack/*/start/*"
   if not string.find(vim.o.runtimepath, rtp_addition) then
@@ -25,12 +25,15 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]]
+
+local packer_user_config = vim.api.nvim_create_augroup("packer_user_config", { clear = true })
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  pattern = { "plugins.lua" },
+  callback = function()
+    vim.cmd("source <afile> | PackerSync")
+  end,
+  group = packer_user_config,
+})
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
@@ -111,6 +114,11 @@ return packer.startup(
   use "folke/trouble.nvim"
   use "SmiteshP/nvim-gps"
 
+  -- use {
+  --   "folke/lua-dev.nvim",
+  --   after = { "nvim-lspconfig" },
+  -- }
+
   -- 自动补全系列插件
   use {
     "hrsh7th/nvim-cmp",
@@ -128,7 +136,7 @@ return packer.startup(
       -- { "lukas-reineke/cmp-under-comparator" }, -- 让补全结果的排序更加智能
     }
   }
-  use "github/copilot.vim" -- git copilot 自动补全
+  -- use "github/copilot.vim" -- git copilot 自动补全
   -- tabnine 源,提供基于 AI 的智能补全
   use {
     "tzachar/cmp-tabnine",
@@ -171,7 +179,10 @@ return packer.startup(
   ------------- 常用工具 -------------
 
   -- 目录大纲
-  use "kyazdani42/nvim-tree.lua" --资源管理器
+  use {
+    "kyazdani42/nvim-tree.lua",
+    tag = 'nightly'
+  } --资源管理器
   -- use "liuchengxu/vista.vim"  -- 代码大纲
   use "stevearc/aerial.nvim" -- 代码大纲
   use 'simrat39/symbols-outline.nvim'
@@ -239,8 +250,10 @@ return packer.startup(
   use "kevinhwang91/nvim-hlslens" -- 搜索时显示条目
   use "folke/which-key.nvim" -- 显示绑定键位
 
-  -- use "voldikss/vim-translator"  -- 翻译
-
+  -- use {
+  -- "uga-rosa/translate.nvim", -- an excellent translation plugin
+  -- cmd = { "Translate" },
+  -- }
   ------------- 功能增强 -------------
 
   use "akinsho/toggleterm.nvim" -- 内置终端

@@ -5,6 +5,7 @@ if not ok then
 end
 
 local keymaps = require("core.keymaps")
+local cmp = require('cmp')
 return function()
   luasnip.config.set_config({
     history = true,

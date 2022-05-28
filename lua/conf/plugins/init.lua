@@ -19,9 +19,9 @@ M.setup = function()
     "nvim-markdown-previewrkdown-prview",
     "vista",
     "filetype",
-    "vim-translator",
     "luasnip",
     "symbols_outline",
+    "translate",
   }
 
   local helper_set = {}

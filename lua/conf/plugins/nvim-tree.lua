@@ -1,11 +1,9 @@
 -- https://github.com/kyazdani42/nvim-tree.lua
---
 -- <CR> or o on the root folder will cd in the above directory
 -- <C-]> will cd in the directory under the cursor
 -- <BS> will close current opened directory or parent
 -- type a to add a file. Adding a directory requires leaving a leading / at the end of the path.
 -- you can add multiple directories by doing foo/bar/baz/f and it will add foo bar and baz directories and f as a file
---
 -- type r to rename a file
 -- type <C-r> to rename a file and omit the filename on input
 -- type x to add/remove file/directory to cut clipboard
@@ -35,9 +33,30 @@
 -- S will prompt the user to enter a path and then expands the tree to match the path
 -- . will enter vim command mode with the file the cursor is on
 -- C-k will toggle a popup with file infos about the file under the cursor
---
 -- following options are the default
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
+-- 默认按键
+-- o     ：打开目录或文件
+-- a     ：新增目录或文件
+-- r     ：重命名目录或文件
+-- x     ：剪切目录或文件
+-- c     ：复制目录或文件
+-- d     ：删除目录或文件
+-- y     ：复制目录或文件名称
+-- Y     ：复制目录或文件相对路径
+-- gy    ：复制目录或文件绝对路径
+-- p     ：粘贴目录或文件
+-- s     ：使用系统默认程序打开目录或文件
+-- <Tab> ：将文件添加到缓冲区，但不移动光标
+-- <C-v> ：垂直分屏打开文件
+-- <C-x> ：水平分屏打开文件
+-- <C-]> ：进入光标下的目录
+-- <C-r> ：重命名目录或文件，删除已有目录名称
+-- -     ：返回上层目录
+-- I     ：切换隐藏文件/目录的可见性
+-- H     ：切换点文件的可见性
+-- R     ：刷新资源管理器
+-- 另外，文件资源管理器操作和操作文档方式一致，可按 / ? 进行搜索
 vim.g.nvim_tree_icons = {
   default = "",
   symlink = "",
@@ -184,6 +203,8 @@ nvim_tree.setup({
 }
 )
 
+-- 目录后加上反斜杠 /
+vim.g.nvim_tree_add_trailing = 1
 -- with relative path
 require "nvim-tree.events".on_file_created(function(file) vim.cmd("edit " .. file.fname) end)
 -- with absolute path
@@ -195,28 +216,3 @@ vim.cmd(
     autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
 ]]
 )
--- 目录后加上反斜杠 /
-vim.g.nvim_tree_add_trailing = 1
-
--- 默认按键
--- o     ：打开目录或文件
--- a     ：新增目录或文件
--- r     ：重命名目录或文件
--- x     ：剪切目录或文件
--- c     ：复制目录或文件
--- d     ：删除目录或文件
--- y     ：复制目录或文件名称
--- Y     ：复制目录或文件相对路径
--- gy    ：复制目录或文件绝对路径
--- p     ：粘贴目录或文件
--- s     ：使用系统默认程序打开目录或文件
--- <Tab> ：将文件添加到缓冲区，但不移动光标
--- <C-v> ：垂直分屏打开文件
--- <C-x> ：水平分屏打开文件
--- <C-]> ：进入光标下的目录
--- <C-r> ：重命名目录或文件，删除已有目录名称
--- -     ：返回上层目录
--- I     ：切换隐藏文件/目录的可见性
--- H     ：切换点文件的可见性
--- R     ：刷新资源管理器
--- 另外，文件资源管理器操作和操作文档方式一致，可按 / ? 进行搜索
