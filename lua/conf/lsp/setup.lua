@@ -6,11 +6,10 @@
 -- install_root_dir = path.concat { vim.fn.stdpath "data", "lsp_servers" }
 -- 安装i,更新u,检查版本c,全部更新U,检测过时版本C,卸载X
 
-
 -- Setup lsp-config & installer
 
 local keymaps = require("core.keymaps")
-local icons = require('utils.icons')
+local icons = require("utils.icons")
 
 -- 诊断样式定制
 local signs = icons.diagnostics
@@ -28,8 +27,8 @@ vim.diagnostic.config({
   float = { source = "always" },
 })
 -- TODO: Use lsp_signature instead
-vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#1f2335]]
-vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
+vim.cmd([[autocmd ColorScheme * highlight NormalFloat guibg=#1f2335]])
+vim.cmd([[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]])
 
 local border = {
   { "╭", "FloatBorder" },
@@ -52,7 +51,7 @@ end
 
 -- 配置 nvim-lsp-installer，它只负责下载 LSP 服务器
 local nvim_lsp_installer = require("nvim-lsp-installer")
-nvim_lsp_installer.setup {
+nvim_lsp_installer.setup({
   -- A list of servers to automatically install if they're not already installed
   ensure_installed = { "sumneko_lua", "pyright", "jsonls" },
   -- Whether servers that are set up (via lspconfig) should be automatically installed if they're not already installed
@@ -63,7 +62,7 @@ nvim_lsp_installer.setup {
   --   download_url_template = "https://github.com/%s/releases/download/%s/%s",
   -- },
   -- max_concurrent_installers = 20,
-}
+})
 
 -- 需要通过 lspconfig 插件启动 LSP 服务器,所以这里将它导入进来
 local lspconfig = require("lspconfig")
@@ -91,21 +90,21 @@ keymaps.register({
   },
   {
     mode = { "n" },
-    lhs = "<leader>rn",
+    lhs = "<leader>cn",
     rhs = vim.lsp.buf.rename,
     options = { silent = true },
     description = "Variable renaming",
   },
-  -- {
-  --   mode = { "n" },
-  --   lhs = "<leader>cf",
-  --   rhs = vim.lsp.buf.formatting_sync,
-  --   options = { silent = true },
-  --   description = "Format buffer",
-  -- },
   {
     mode = { "n" },
-    lhs = "gi",
+    lhs = "<leader>cf",
+    rhs = vim.lsp.buf.formatting_sync,
+    options = { silent = true },
+    description = "Format buffer",
+  },
+  {
+    mode = { "n" },
+    lhs = "gI",
     rhs = function()
       require("telescope.builtin").lsp_implementations()
     end,
@@ -127,7 +126,7 @@ keymaps.register({
     rhs = function()
       require("telescope.builtin").lsp_definitions()
     end,
-    options = { silent = true },
+    options = { silent = true,  },
     description = "Go to definitions",
   },
   {
@@ -159,16 +158,16 @@ keymaps.register({
     mode = { "n" },
     lhs = "[g",
     rhs = function()
-      vim.diagnostic.goto_prev({ float = { border = M.floating_style } })
+      vim.diagnostic.goto_prev({ float = { border = "rounded" } })
     end,
-    options = { silent = true },
+    options = { silent = true,  },
     description = "Jump to prev diagnostic",
   },
   {
     mode = { "n" },
     lhs = "]g",
     rhs = function()
-      vim.diagnostic.goto_next({ float = { border = M.floating_style } })
+      vim.diagnostic.goto_next({ float = { border = "rounded" } })
     end,
     options = { silent = true },
     description = "Jump to next diagnostic",
@@ -206,8 +205,7 @@ keymaps.register({
         if vim.tbl_contains(scroll_floating_filetype, ft) then
           local win_height = vim.api.nvim_win_get_height(win_id)
           local cursor_line = vim.api.nvim_win_get_cursor(win_id)[1]
-          ---@diagnostic disable-next-line: redundant-parameter
-          local buf_total_line = vim.fn.line("$", win_id)
+          local buf_total_line = vim.api.nvim_buf_line_count(buf_id)
           ---@diagnostic disable-next-line: redundant-parameter
           local win_last_line = vim.fn.line("w$", win_id)
 
@@ -218,14 +216,12 @@ keymaps.register({
 
           vim.opt.scrolloff = 0
           if cursor_line < win_last_line then
-            vim.api.nvim_win_set_cursor(win_id, { win_last_line + M.float_scrollnumber, 0 })
-          elseif cursor_line + M.float_scrollnumber > buf_total_line then
-            vim.api.nvim_win_set_cursor(win_id, { win_last_line, 0 })
+            vim.api.nvim_win_set_cursor(win_id, { win_last_line + 5, 0 })
+          elseif cursor_line + 5 > buf_total_line then
+            vim.api.nvim_win_set_cursor(win_id, { buf_total_line, 0 })
           else
-            vim.api.nvim_win_set_cursor(win_id, { cursor_line + M.float_scrollnumber, 0 })
+            vim.api.nvim_win_set_cursor(win_id, { cursor_line + 5, 0 })
           end
-          vim.opt.scrolloff = M.opt_scrolloff
-
           return
         end
       end
@@ -251,8 +247,7 @@ keymaps.register({
         if vim.tbl_contains(scroll_floating_filetype, ft) then
           local win_height = vim.api.nvim_win_get_height(win_id)
           local cursor_line = vim.api.nvim_win_get_cursor(win_id)[1]
-          ---@diagnostic disable-next-line: redundant-parameter
-          local buf_total_line = vim.fn.line("$", win_id)
+          local buf_total_line = vim.api.nvim_buf_line_count(buf_id)
           ---@diagnostic disable-next-line: redundant-parameter
           local win_first_line = vim.fn.line("w0", win_id)
 
@@ -263,13 +258,12 @@ keymaps.register({
 
           vim.opt.scrolloff = 0
           if cursor_line > win_first_line then
-            vim.api.nvim_win_set_cursor(win_id, { win_first_line - M.float_scrollnumber, 0 })
-          elseif cursor_line - M.float_scrollnumber < 1 then
+            vim.api.nvim_win_set_cursor(win_id, { win_first_line - 5, 0 })
+          elseif cursor_line - 5 < 1 then
             vim.api.nvim_win_set_cursor(win_id, { 1, 0 })
           else
-            vim.api.nvim_win_set_cursor(win_id, { cursor_line - M.float_scrollnumber, 0 })
+            vim.api.nvim_win_set_cursor(win_id, { cursor_line - 5, 0 })
           end
-          vim.opt.scrolloff = M.opt_scrolloff
 
           return
         end
@@ -288,11 +282,11 @@ keymaps.register({
 local function on_attach(client, bufnr)
   -- set up buffer keymaps
   require("aerial").on_attach(client, bufnr)
-  require "lsp_signature".on_attach()
+  require("lsp_signature").on_attach()
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if cmp_nvim_lsp_ok then
   capabilities = cmp_nvim_lsp.update_capabilities(vim.lsp.protocol.make_client_capabilities())
 end
@@ -318,8 +312,8 @@ capabilities.textDocument.codeAction = {
 -- 启动 LSP 服务器
 local language_servers_config = {
   sumneko_lua = require("conf.lsp.svr-settings.sumneko_lua"),
-  pyright = require('conf.lsp.svr-settings.pyright'),
-  jsonls = require('conf.lsp.svr-settings.jsonls'),
+  pyright = require("conf.lsp.svr-settings.pyright"),
+  jsonls = require("conf.lsp.svr-settings.jsonls"),
 }
 
 -- 循环 LSP 服务器名称和配置

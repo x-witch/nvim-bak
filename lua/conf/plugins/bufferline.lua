@@ -8,9 +8,7 @@ end
 bufferline.setup({
   options = {
     mode = "buffers", -- set to "tabs" to only show tabpages instead
-    numbers = function(opts)
-      return string.format("%s", opts.id)
-    end,
+    numbers = "ordinal",
     -- numbers = "ordinal", -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
     --- @deprecated, please specify numbers as a function to customize the styling
     -- number_style = "superscript", --| "subscript" | "" | { "none", "subscript" }, -- buffer_id at index 1, ordinal at index 2
