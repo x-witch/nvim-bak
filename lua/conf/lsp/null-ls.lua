@@ -6,11 +6,11 @@ end
 
 local formatting = null_ls.builtins.formatting
 -- local diagnostics = null_ls.builtins.diagnostics
-local code_actions = null_ls.builtins.code_actions
-local completion = null_ls.builtins.completion
+-- local code_actions = null_ls.builtins.code_actions
+-- local completion = null_ls.builtins.completion
 
 null_ls.setup({
-  -- debug = false,
+  debug = false,
   sources = {
     -- formatting.clang_format, -- for cpp
     -- formatting.gofmt, -- for golang
@@ -18,7 +18,6 @@ null_ls.setup({
     formatting.autopep8, -- for python
     formatting.stylua, -- for lua
     -- diagnostics.flake8,
-    completion.spell,
     formatting.prettier.with({
       filetypes = {
         "javascript",
@@ -34,7 +33,7 @@ null_ls.setup({
         "yaml",
         "graphql",
       },
-      prefer_local = "node_modules/.bin",
+      -- prefer_local = "node_modules/.bin",
     }),
   },
 

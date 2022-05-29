@@ -112,6 +112,7 @@ return packer.startup(function(use)
   use("ray-x/lsp_signature.nvim") -- 获得函数签名
   use("folke/trouble.nvim")
   use("SmiteshP/nvim-gps")
+  use("RRethy/vim-illuminate")
 
   -- use {
   --   "folke/lua-dev.nvim",
@@ -157,10 +158,9 @@ return packer.startup(function(use)
     "catppuccin/nvim",
     as = "catppuccin",
   })
-
+  -- 浅色主题
   use({ "sainnhe/everforest" })
 
-  -- use 'folke/tokyonight.nvim'  -- tokyonight主题
   use("goolord/alpha-nvim") --欢迎界面
   use("akinsho/bufferline.nvim") -- 顶部标签栏
   use("famiu/bufdelete.nvim") -- 删除 buffer 时不影响现有布局

@@ -424,6 +424,11 @@ _G.packer_plugins = {
     path = "/home/nure/.local/share/nvim/site/pack/packer/opt/undotree",
     url = "https://github.com/mbbill/undotree"
   },
+  ["vim-illuminate"] = {
+    loaded = true,
+    path = "/home/nure/.local/share/nvim/site/pack/packer/start/vim-illuminate",
+    url = "https://github.com/RRethy/vim-illuminate"
+  },
   ["vim-python-pep8-indent"] = {
     loaded = true,
     path = "/home/nure/.local/share/nvim/site/pack/packer/start/vim-python-pep8-indent",
@@ -472,9 +477,9 @@ vim.cmd [[au FileType typescript ++once lua require("packer.load")({'emmet-vim'}
 time([[Defining lazy-load filetype autocommands]], false)
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufNewFile * ++once lua require("packer.load")({'switch.vim', 'undotree', 'vimcdoc', 'nvim-scrollbar'}, { event = "BufNewFile *" }, _G.packer_plugins)]]
 vim.cmd [[au VimEnter * ++once lua require("packer.load")({'faster.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'switch.vim', 'undotree', 'vimcdoc', 'nvim-scrollbar'}, { event = "BufRead *" }, _G.packer_plugins)]]
+vim.cmd [[au BufNewFile * ++once lua require("packer.load")({'vimcdoc', 'switch.vim', 'nvim-scrollbar', 'undotree'}, { event = "BufNewFile *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'vimcdoc', 'switch.vim', 'nvim-scrollbar', 'undotree'}, { event = "BufRead *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 if should_profile then save_profiles() end
