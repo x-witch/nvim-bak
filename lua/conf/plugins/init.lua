@@ -18,7 +18,6 @@ M.setup = function()
     "feline",
     "nvim-markdown-previewrkdown-prview",
     "vista",
-    "filetype",
     "luasnip",
     "symbols_outline",
     "translate",

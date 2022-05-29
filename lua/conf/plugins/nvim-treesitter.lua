@@ -11,11 +11,11 @@ treesitter.setup(
   ensure_installed = { "vim", "lua", "python", "json", "yaml", "html" },
   ignore_install = { "" },
   -- 同步下载高亮支持
-  sync_install = false,
+  sync_install = true,
   -- 高亮相关
   highlight = {
     -- 启用高亮支持
-    enable = true,
+    enable = false,
     disable = { "" },
     -- 使用 treesitter 高亮而不是 neovim 内置的高亮
     additional_vim_regex_highlighting = false,
